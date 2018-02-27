@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Script\Header File\Character\character.h" />
+    <ClInclude Include="Script\Header File\Character\direction.h" />
+    <ClInclude Include="Script\Header File\Character\square.h" />
+    <ClInclude Include="Script\Header File\Default\console.h" />
+    <ClInclude Include="Script\Header File\Default\constants.h" />
+    <ClInclude Include="Script\Header File\Default\entity.h" />
+    <ClInclude Include="Script\Header File\Default\game.h" />
+    <ClInclude Include="Script\Header File\Default\gameError.h" />
+    <ClInclude Include="Script\Header File\Default\gamemain.h" />
+    <ClInclude Include="Script\Header File\Default\graphics.h" />
+    <ClInclude Include="Script\Header File\Default\image.h" />
+    <ClInclude Include="Script\Header File\Default\Input.h" />
+    <ClInclude Include="Script\Header File\Default\sound.h" />
+    <ClInclude Include="Script\Header File\Default\TextDX.h" />
+    <ClInclude Include="Script\Header File\Default\textureManager.h" />
+    <ClInclude Include="Script\Header File\Facility\facility.h" />
+    <ClInclude Include="Script\Header File\GameManager\gameManager.h" />
+    <ClInclude Include="Script\Header File\GameManager\imageManager.h" />
+    <ClInclude Include="Script\Header File\GameManager\soundManager.h" />
+    <ClInclude Include="Script\Header File\Otherwise\Fade.h" />
+    <ClInclude Include="Script\Header File\Otherwise\lerpMove.h" />
+    <ClInclude Include="Script\Header File\Otherwise\math.h" />
+    <ClInclude Include="Script\Header File\Otherwise\testPoint.h" />
+    <ClInclude Include="Script\Header File\Otherwise\timer.h" />
+    <ClInclude Include="Script\Header File\Otherwise\vector2.h" />
+    <ClInclude Include="Script\Header File\Scene\gameClear.h" />
+    <ClInclude Include="Script\Header File\Scene\gameOver.h" />
+    <ClInclude Include="Script\Header File\Scene\gamePlay.h" />
+    <ClInclude Include="Script\Header File\Scene\scene.h" />
+    <ClInclude Include="Script\Header File\Scene\sceneManager.h" />
+    <ClInclude Include="Script\Header File\Scene\sceneMode.h" />
+    <ClInclude Include="Script\Header File\Scene\title.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Script\Source File\Character\character.cpp" />
+    <ClCompile Include="Script\Source File\Character\square.cpp" />
+    <ClCompile Include="Script\Source File\Default\Console.cpp" />
+    <ClCompile Include="Script\Source File\Default\Entity.cpp" />
+    <ClCompile Include="Script\Source File\Default\game.cpp" />
+    <ClCompile Include="Script\Source File\Default\GameMain.cpp" />
+    <ClCompile Include="Script\Source File\Default\graphics.cpp" />
+    <ClCompile Include="Script\Source File\Default\image.cpp" />
+    <ClCompile Include="Script\Source File\Default\input.cpp" />
+    <ClCompile Include="Script\Source File\Default\sound.cpp" />
+    <ClCompile Include="Script\Source File\Default\TextDX.cpp" />
+    <ClCompile Include="Script\Source File\Default\textureManager.cpp" />
+    <ClCompile Include="Script\Source File\Default\winmain.cpp" />
+    <ClCompile Include="Script\Source File\Facility\Facility.cpp" />
+    <ClCompile Include="Script\Source File\GameManager\gameManager.cpp" />
+    <ClCompile Include="Script\Source File\GameManager\imageManager.cpp" />
+    <ClCompile Include="Script\Source File\GameManager\soundManager.cpp" />
+    <ClCompile Include="Script\Source File\Otherwise\Fade.cpp" />
+    <ClCompile Include="Script\Source File\Otherwise\lerpMove.cpp" />
+    <ClCompile Include="Script\Source File\Otherwise\Math.cpp" />
+    <ClCompile Include="Script\Source File\Otherwise\testPoint.cpp" />
+    <ClCompile Include="Script\Source File\Otherwise\timer.cpp" />
+    <ClCompile Include="Script\Source File\Otherwise\Vector2.cpp" />
+    <ClCompile Include="Script\Source File\Scene\GameClear.cpp" />
+    <ClCompile Include="Script\Source File\Scene\GameOver.cpp" />
+    <ClCompile Include="Script\Source File\Scene\GamePlay.cpp" />
+    <ClCompile Include="Script\Source File\Scene\SceneManager.cpp" />
+    <ClCompile Include="Script\Source File\Scene\Title.cpp" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{665089B5-2503-4B4A-BD36-395C7A69F88E}</ProjectGuid>
+    <RootNamespace>DirectXWindow</RootNamespace>
+    <ProjectName>AI_Battle</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>C:\Users\shunichi\Desktop\2011.3\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\shunichi\Desktop\2011.3\lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <IncludePath>$(DXSDK_DIR)\Include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(DXSDK_DIR)\Lib\86;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>false</SDLCheck>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>d3d9.lib;d3dx9.lib;winmm.lib;xinput.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(DXSDK_DIR)\Lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>d3d9.lib;d3dx9.lib;winmm.lib;xinput.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

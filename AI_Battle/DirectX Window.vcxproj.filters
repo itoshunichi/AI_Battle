@@ -1,0 +1,241 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="リソース ファイル">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="HeaderFile">
+      <UniqueIdentifier>{c1b278fa-ab02-496c-9e5f-142cf45a6061}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source FIle">
+      <UniqueIdentifier>{6ad806b7-a953-479a-8218-a31325e9dab3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HeaderFile\Character">
+      <UniqueIdentifier>{1c9e360b-c211-4bab-a06b-0dd90de1ef4c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HeaderFile\Default">
+      <UniqueIdentifier>{e35fbf87-26d5-4469-b9ca-b3467363bd3c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HeaderFile\GameManager">
+      <UniqueIdentifier>{d5ad82bc-bc35-4e86-b5bf-b5c5a34aab07}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HeaderFile\Otherwise">
+      <UniqueIdentifier>{ce45ec0c-924d-4d42-b44e-b883eb060891}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HeaderFile\Scene">
+      <UniqueIdentifier>{8347e106-da77-4651-abf3-c074a90b339d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HeaderFile\Stage">
+      <UniqueIdentifier>{a8e087a1-66ae-4ee6-a5f6-cd5aaa44418d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source FIle\Character">
+      <UniqueIdentifier>{e2ff1b54-6ca7-41cc-9066-362ba1f73ba7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source FIle\Default">
+      <UniqueIdentifier>{b02d2610-2424-4645-a8ea-bcf416945c74}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source FIle\GameManager">
+      <UniqueIdentifier>{c54264cc-c365-4a09-bfd5-a4aca5822010}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source FIle\Stage">
+      <UniqueIdentifier>{b0c98660-45d8-4c9c-b62f-609e0271a559}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source FIle\Scene">
+      <UniqueIdentifier>{3bd68f4d-4bde-4061-99a1-94e4e67522e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source FIle\Otherwise">
+      <UniqueIdentifier>{7377cc22-4059-4692-a4f9-7a96b2254386}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HeaderFile\Facility">
+      <UniqueIdentifier>{ee93bf67-f731-430d-96ad-808bcb70b6fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source FIle\Facility">
+      <UniqueIdentifier>{9c7171df-0cb2-430e-8b36-969ce4bb44e5}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Script\Header File\Character\character.h">
+      <Filter>HeaderFile\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="Script\Header File\Character\direction.h">
+      <Filter>HeaderFile\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="Script\Header File\Character\square.h">
+      <Filter>HeaderFile\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="Script\Header File\Default\console.h">
+      <Filter>HeaderFile\Default</Filter>
+    </ClInclude>
+    <ClInclude Include="Script\Header File\Default\constants.h">
+      <Filter>HeaderFile\Default</Filter>
+    </ClInclude>
+    <ClInclude Include="Script\Header File\Default\entity.h">
+      <Filter>HeaderFile\Default</Filter>
+    </ClInclude>
+    <ClInclude Include="Script\Header File\Default\game.h">
+      <Filter>HeaderFile\Default</Filter>
+    </ClInclude>
+    <ClInclude Include="Script\Header File\Default\gameError.h">
+      <Filter>HeaderFile\Default</Filter>
+    </ClInclude>
+    <ClInclude Include="Script\Header File\Default\gamemain.h">
+      <Filter>HeaderFile\Default</Filter>
+    </ClInclude>
+    <ClInclude Include="Script\Header File\Default\graphics.h">
+      <Filter>HeaderFile\Default</Filter>
+    </ClInclude>
+    <ClInclude Include="Script\Header File\Default\image.h">
+      <Filter>HeaderFile\Default</Filter>
+    </ClInclude>
+    <ClInclude Include="Script\Header File\Default\Input.h">
+      <Filter>HeaderFile\Default</Filter>
+    </ClInclude>
+    <ClInclude Include="Script\Header File\Default\sound.h">
+      <Filter>HeaderFile\Default</Filter>
+    </ClInclude>
+    <ClInclude Include="Script\Header File\Default\TextDX.h">
+      <Filter>HeaderFile\Default</Filter>
+    </ClInclude>
+    <ClInclude Include="Script\Header File\Default\textureManager.h">
+      <Filter>HeaderFile\Default</Filter>
+    </ClInclude>
+    <ClInclude Include="Script\Header File\GameManager\gameManager.h">
+      <Filter>HeaderFile\GameManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Script\Header File\GameManager\imageManager.h">
+      <Filter>HeaderFile\GameManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Script\Header File\GameManager\soundManager.h">
+      <Filter>HeaderFile\GameManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Script\Header File\Scene\gameClear.h">
+      <Filter>HeaderFile\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Script\Header File\Scene\gameOver.h">
+      <Filter>HeaderFile\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Script\Header File\Scene\gamePlay.h">
+      <Filter>HeaderFile\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Script\Header File\Scene\sceneManager.h">
+      <Filter>HeaderFile\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Script\Header File\Scene\title.h">
+      <Filter>HeaderFile\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Script\Header File\Otherwise\Fade.h">
+      <Filter>HeaderFile\Otherwise</Filter>
+    </ClInclude>
+    <ClInclude Include="Script\Header File\Otherwise\lerpMove.h">
+      <Filter>HeaderFile\Otherwise</Filter>
+    </ClInclude>
+    <ClInclude Include="Script\Header File\Otherwise\math.h">
+      <Filter>HeaderFile\Otherwise</Filter>
+    </ClInclude>
+    <ClInclude Include="Script\Header File\Otherwise\testPoint.h">
+      <Filter>HeaderFile\Otherwise</Filter>
+    </ClInclude>
+    <ClInclude Include="Script\Header File\Otherwise\timer.h">
+      <Filter>HeaderFile\Otherwise</Filter>
+    </ClInclude>
+    <ClInclude Include="Script\Header File\Otherwise\vector2.h">
+      <Filter>HeaderFile\Otherwise</Filter>
+    </ClInclude>
+    <ClInclude Include="Script\Header File\Scene\scene.h">
+      <Filter>HeaderFile\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Script\Header File\Scene\sceneMode.h">
+      <Filter>HeaderFile\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Script\Header File\Facility\facility.h">
+      <Filter>HeaderFile\Facility</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Script\Source File\Character\character.cpp">
+      <Filter>Source FIle\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="Script\Source File\Character\square.cpp">
+      <Filter>Source FIle\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="Script\Source File\Default\Console.cpp">
+      <Filter>Source FIle\Default</Filter>
+    </ClCompile>
+    <ClCompile Include="Script\Source File\Default\Entity.cpp">
+      <Filter>Source FIle\Default</Filter>
+    </ClCompile>
+    <ClCompile Include="Script\Source File\Default\game.cpp">
+      <Filter>Source FIle\Default</Filter>
+    </ClCompile>
+    <ClCompile Include="Script\Source File\Default\GameMain.cpp">
+      <Filter>Source FIle\Default</Filter>
+    </ClCompile>
+    <ClCompile Include="Script\Source File\Default\graphics.cpp">
+      <Filter>Source FIle\Default</Filter>
+    </ClCompile>
+    <ClCompile Include="Script\Source File\Default\image.cpp">
+      <Filter>Source FIle\Default</Filter>
+    </ClCompile>
+    <ClCompile Include="Script\Source File\Default\input.cpp">
+      <Filter>Source FIle\Default</Filter>
+    </ClCompile>
+    <ClCompile Include="Script\Source File\Default\sound.cpp">
+      <Filter>Source FIle\Default</Filter>
+    </ClCompile>
+    <ClCompile Include="Script\Source File\Default\TextDX.cpp">
+      <Filter>Source FIle\Default</Filter>
+    </ClCompile>
+    <ClCompile Include="Script\Source File\Default\textureManager.cpp">
+      <Filter>Source FIle\Default</Filter>
+    </ClCompile>
+    <ClCompile Include="Script\Source File\Default\winmain.cpp">
+      <Filter>Source FIle\Default</Filter>
+    </ClCompile>
+    <ClCompile Include="Script\Source File\GameManager\gameManager.cpp">
+      <Filter>Source FIle\GameManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Script\Source File\GameManager\imageManager.cpp">
+      <Filter>Source FIle\GameManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Script\Source File\GameManager\soundManager.cpp">
+      <Filter>Source FIle\GameManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Script\Source File\Otherwise\Fade.cpp">
+      <Filter>Source FIle\Otherwise</Filter>
+    </ClCompile>
+    <ClCompile Include="Script\Source File\Otherwise\lerpMove.cpp">
+      <Filter>Source FIle\Otherwise</Filter>
+    </ClCompile>
+    <ClCompile Include="Script\Source File\Otherwise\Math.cpp">
+      <Filter>Source FIle\Otherwise</Filter>
+    </ClCompile>
+    <ClCompile Include="Script\Source File\Otherwise\testPoint.cpp">
+      <Filter>Source FIle\Otherwise</Filter>
+    </ClCompile>
+    <ClCompile Include="Script\Source File\Otherwise\timer.cpp">
+      <Filter>Source FIle\Otherwise</Filter>
+    </ClCompile>
+    <ClCompile Include="Script\Source File\Otherwise\Vector2.cpp">
+      <Filter>Source FIle\Otherwise</Filter>
+    </ClCompile>
+    <ClCompile Include="Script\Source File\Scene\GameClear.cpp">
+      <Filter>Source FIle\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Script\Source File\Scene\GameOver.cpp">
+      <Filter>Source FIle\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Script\Source File\Scene\GamePlay.cpp">
+      <Filter>Source FIle\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Script\Source File\Scene\SceneManager.cpp">
+      <Filter>Source FIle\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Script\Source File\Scene\Title.cpp">
+      <Filter>Source FIle\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Script\Source File\Facility\Facility.cpp">
+      <Filter>Source FIle\Facility</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
