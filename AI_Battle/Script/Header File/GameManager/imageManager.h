@@ -11,13 +11,16 @@ using namespace std;
 
 namespace TextureName
 {
-	const char FACILIITY_TEXTURE[] = "pictures\\siro.png"
+	const char FACILIITY_TEXTURE[] = "pictures\\siro.png";
+	const char FADE_TEXTURE[] = "pictures\\fade.png";
+	const char AITEMICON_TEXTURE[] = "pictures\\aitemIcon.png";
 }
 
 class ImageManager
 {
 private:
 	TextureManager* facility_TextureManager;
+	TextureManager* aitemIcon_TextureManager;
 	//TextureManager
 	TextureManager* player_wait;
 	TextureManager* fade;
@@ -28,7 +31,9 @@ private:
 
 	//Image
 	Image facility_image;
+	Image aitemIcon_image;
 	Image player_wait_image;
+
 	Image hp_Image;
 	Image wall_Image;
 	Image testPoint_Image;
@@ -47,6 +52,8 @@ public:
 	void onReserDevice();
 
 	//ImageŽæ“¾
+	Image getFacility_Image(){ return facility_image; }
+	Image getAitemIcon_Image(){ return aitemIcon_image; }
 	Image GetPlayer_Wait_Image(){ return player_wait_image; }
 	Image fadeImage;
 	Image getFadeImage(){ return fadeImage; }

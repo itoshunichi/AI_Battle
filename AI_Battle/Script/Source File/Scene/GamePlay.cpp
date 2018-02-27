@@ -23,8 +23,12 @@ void GamePlay::initialize()
 	//フェード
 	fade = Fade(gameManager->getImageManager());
 	fade.initialize();
-	//player.initialize();
-	//player2.initialize();
+	facility_1 = new Facility(gameManager);
+	facility_1->initialize();
+	facility_1->setPosition(vector2(0, 0));
+	facility_2 = new Facility(gameManager);
+	facility_2->initialize();
+	facility_2->setPosition(vector2(GAME_WIDTH - 128, 0));
 	isEnd = false;
 
 }
@@ -39,13 +43,17 @@ void GamePlay::update(float frameTime)
 {
 	//フェードの更新
 	fade.update();
-
+	facility_1->update(frameTime);
+	facility_2->update(frameTime);
 }
 
 /*描画*/
 void GamePlay::draw()
 {
+	facility_1->draw();
+	facility_2->draw();
 	fade.draw();
+	
 }
 
 void GamePlay::collision()

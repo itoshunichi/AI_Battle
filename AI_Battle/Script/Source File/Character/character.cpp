@@ -12,14 +12,14 @@ Character::~Character()
 
 void Character::setAngle()
 {
-	if (direction == Direction::UP)
+	/*if (direction == Direction::UP)
 	{
 		currentImage.setDegress(0);
 	}
 	if (direction == Direction::DOWN)
 	{
 		currentImage.setDegress(180);
-	}
+	}*/
 	if (direction == Direction::RIGHT)
 	{
 		currentImage.setDegress(90);
