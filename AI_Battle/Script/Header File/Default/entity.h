@@ -10,6 +10,7 @@
 namespace entityNS
 {
 	enum COLLISION_TYPE{NONE,CIRCLE,BOX,ROTATED_BOX};//あたり判定の種類
+	enum COLLISION_TAG{FACILITY,CHARACTER};
 	const float GRAVITY = 6.67428e-11f; 
 }
 
@@ -22,6 +23,7 @@ protected:
 	Vector2 position;
 	Image currentImage;
 	entityNS::COLLISION_TYPE collisionType;
+	entityNS::COLLISION_TAG collisionTag;
 	Vector2 center;//エンティティの中心点
 	float radius;//円の半径
 	Vector2 distSqured;
@@ -97,6 +99,8 @@ public:
 
 	virtual entityNS::COLLISION_TYPE getCollisionType(){ return collisionType; }
 
+	virtual entityNS::COLLISION_TAG getCollisionTag(){ return collisionTag; }
+
 	virtual void setPosition(Vector2 position){ this->position = position; }
 
 	virtual void setVelocity(Vector2 v){ velocity = v; }
@@ -128,7 +132,7 @@ public:
 
 	virtual bool outsideRect(RECT rect);
 
-	virtual bool collideWith(Entity &ent);
+	virtual bool collideWith(Entity &ent,entityNS::COLLISION_TAG collisionTag);
 
 	virtual void damage(int weapon);
 

@@ -3,15 +3,18 @@
 
 #include"scene.h"
 #include"../Otherwise/timer.h"
-#include"../Facility/facility.h"
+#include"../Facility/shop.h"
+#include"../Character/testCharacter.h"
 
 
 class GamePlay:public Scene
 {
 private:
 	Console *console;
-	Facility *facility_1;
-	Facility *facility_2;
+	Shop *facility_1;
+	Shop *facility_2;
+	TestCharacter *testCharacter;
+	
 public:
 	//コンストラクタ
 	GamePlay();

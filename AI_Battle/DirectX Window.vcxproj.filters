@@ -47,10 +47,10 @@
     <Filter Include="Source FIle\Otherwise">
       <UniqueIdentifier>{7377cc22-4059-4692-a4f9-7a96b2254386}</UniqueIdentifier>
     </Filter>
-    <Filter Include="HeaderFile\Facility">
+    <Filter Include="HeaderFile\Shop">
       <UniqueIdentifier>{ee93bf67-f731-430d-96ad-808bcb70b6fc}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source FIle\Facility">
+    <Filter Include="Source FIle\Shop">
       <UniqueIdentifier>{9c7171df-0cb2-430e-8b36-969ce4bb44e5}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -148,8 +148,11 @@
     <ClInclude Include="Script\Header File\Scene\sceneMode.h">
       <Filter>HeaderFile\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="Script\Header File\Facility\facility.h">
-      <Filter>HeaderFile\Facility</Filter>
+    <ClInclude Include="Script\Header File\Character\testCharacter.h">
+      <Filter>HeaderFile\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="Script\Header File\Facility\shop.h">
+      <Filter>HeaderFile\Shop</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -234,8 +237,11 @@
     <ClCompile Include="Script\Source File\Scene\Title.cpp">
       <Filter>Source FIle\Scene</Filter>
     </ClCompile>
-    <ClCompile Include="Script\Source File\Facility\Facility.cpp">
-      <Filter>Source FIle\Facility</Filter>
+    <ClCompile Include="Script\Header File\Character\TestCharacter.cpp">
+      <Filter>Source FIle\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="Script\Source File\Facility\Shop.cpp">
+      <Filter>Source FIle\Shop</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

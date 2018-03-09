@@ -14,6 +14,7 @@ namespace TextureName
 	const char FACILIITY_TEXTURE[] = "pictures\\siro.png";
 	const char FADE_TEXTURE[] = "pictures\\fade.png";
 	const char AITEMICON_TEXTURE[] = "pictures\\aitemIcon.png";
+	const char TESTPLAYER_TEXTURE[] = "pictures\\character.png";
 }
 
 class ImageManager
@@ -21,6 +22,7 @@ class ImageManager
 private:
 	TextureManager* facility_TextureManager;
 	TextureManager* aitemIcon_TextureManager;
+	TextureManager* testCharacter_TextureManager;
 	//TextureManager
 	TextureManager* player_wait;
 	TextureManager* fade;
@@ -32,6 +34,7 @@ private:
 	//Image
 	Image facility_image;
 	Image aitemIcon_image;
+	Image testCharacter_image;
 	Image player_wait_image;
 
 	Image hp_Image;
@@ -54,6 +57,7 @@ public:
 	//ImageŽæ“¾
 	Image getFacility_Image(){ return facility_image; }
 	Image getAitemIcon_Image(){ return aitemIcon_image; }
+	Image getTestCharacter_Image(){ return testCharacter_image; }
 	Image GetPlayer_Wait_Image(){ return player_wait_image; }
 	Image fadeImage;
 	Image getFadeImage(){ return fadeImage; }

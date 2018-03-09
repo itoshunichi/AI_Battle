@@ -14,6 +14,7 @@
     <ClInclude Include="Script\Header File\Character\character.h" />
     <ClInclude Include="Script\Header File\Character\direction.h" />
     <ClInclude Include="Script\Header File\Character\square.h" />
+    <ClInclude Include="Script\Header File\Character\testCharacter.h" />
     <ClInclude Include="Script\Header File\Default\console.h" />
     <ClInclude Include="Script\Header File\Default\constants.h" />
     <ClInclude Include="Script\Header File\Default\entity.h" />
@@ -26,7 +27,7 @@
     <ClInclude Include="Script\Header File\Default\sound.h" />
     <ClInclude Include="Script\Header File\Default\TextDX.h" />
     <ClInclude Include="Script\Header File\Default\textureManager.h" />
-    <ClInclude Include="Script\Header File\Facility\facility.h" />
+    <ClInclude Include="Script\Header File\Facility\shop.h" />
     <ClInclude Include="Script\Header File\GameManager\gameManager.h" />
     <ClInclude Include="Script\Header File\GameManager\imageManager.h" />
     <ClInclude Include="Script\Header File\GameManager\soundManager.h" />
@@ -45,6 +46,7 @@
     <ClInclude Include="Script\Header File\Scene\title.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Script\Header File\Character\TestCharacter.cpp" />
     <ClCompile Include="Script\Source File\Character\character.cpp" />
     <ClCompile Include="Script\Source File\Character\square.cpp" />
     <ClCompile Include="Script\Source File\Default\Console.cpp" />
@@ -58,7 +60,7 @@
     <ClCompile Include="Script\Source File\Default\TextDX.cpp" />
     <ClCompile Include="Script\Source File\Default\textureManager.cpp" />
     <ClCompile Include="Script\Source File\Default\winmain.cpp" />
-    <ClCompile Include="Script\Source File\Facility\Facility.cpp" />
+    <ClCompile Include="Script\Source File\Facility\Shop.cpp" />
     <ClCompile Include="Script\Source File\GameManager\gameManager.cpp" />
     <ClCompile Include="Script\Source File\GameManager\imageManager.cpp" />
     <ClCompile Include="Script\Source File\GameManager\soundManager.cpp" />

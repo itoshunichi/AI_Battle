@@ -15,7 +15,7 @@ Entity::Entity()
 	deltaV.y = 0.0;
 	active = true; //エンティティはアクティブ
 	rotatedBoxReady = false;
-	collisionType = entityNS::CIRCLE;
+	collisionType = entityNS::BOX;
 	health = 100;
 	gravity = entityNS::GRAVITY;
 	center = vector2(0, 0);
@@ -47,6 +47,7 @@ void Entity::activate()
 //frameTimeは、移動とアニメーションの速さを制御するために使用
 void Entity::update(float frameTime)
 {
+	center = position + vector2(currentImage.getWidth() / 2, currentImage.getHeight() / 2);
 	currentImage.setX(position.x);
 	currentImage.setY(position.y);
 	currentImage.update(frameTime);
@@ -71,10 +72,11 @@ void Entity::ai(float frameTime, Entity &ent)
 //衝突の種類:CIRCLE,BOX,またはROTATED_BOX
 //実行後：衝突している場合はtrue,していない場合はfalseを戻す
 //        衝突している場合は,collisionVectorを設定
-bool Entity::collideWith(Entity &ent)
+bool Entity::collideWith(Entity &ent,entityNS::COLLISION_TAG collisionTag)
 {
 	//if (otherTag != ""&&ent.getTag() != otherTag)return false;
-
+	
+	if (ent.collisionTag != collisionTag)return false;
 	//どちらかのエンティティがアクティブでない場合、衝突は起こらない
 	if (!active || !ent.getActive())
 		return false;
@@ -164,8 +166,8 @@ bool Entity::collideBox(Entity &ent)
 	//	ent.getCurrentImage().getCenterY() + ent.getEdge().top*ent.getCurrentImage().getScale()) &&
 	//	(currentImage.getCenterY() + edge.top*getCurrentImage().getScale() <=
 	//	ent.getCurrentImage().getCenterY() + ent.getEdge().bottom*ent.getCurrentImage().getScale()))
-	if (Math::abs(position.x - ent.getPosition().x)<(currentImage.getWidth()*currentImage.getScale()) / 2 + (ent.getCurrentImage().getWidth()*ent.getCurrentImage().getScale())/2&&
-		Math::abs(position.y - ent.getPosition().y)<(currentImage.getHeight()*currentImage.getScale()) / 2 + (ent.getCurrentImage().getHeight()*ent.getCurrentImage().getScale())/2)
+	if (Math::abs(center.x - ent.getCenter().x)<(currentImage.getWidth()*currentImage.getScale()) / 2 + (ent.getCurrentImage().getWidth()*ent.getCurrentImage().getScale())/2&&
+		Math::abs(center.y - ent.getCenter().y)<(currentImage.getHeight()*currentImage.getScale()) / 2 + (ent.getCurrentImage().getHeight()*ent.getCurrentImage().getScale())/2)
 	{
 		//衝突ベクトルを設定
 		collisionVelocity = ent.getCenter() - getCenter();
@@ -173,8 +175,11 @@ bool Entity::collideBox(Entity &ent)
 		return true;
 
 	}
-
-	return false;
+	else
+	{
+		return false;
+	}
+	
 }
 
 //回転するボックスの衝突判定メソッド
