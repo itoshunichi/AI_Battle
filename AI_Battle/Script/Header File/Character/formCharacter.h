@@ -1,5 +1,5 @@
-#ifndef FORMCHARACTERPOINT_H_
-#define FORMCHARACTERPOINT_H_
+#ifndef FORMCHARACTER_H_
+#define FORMCHARACTER_H_
 
 #include"../GameManager/gameManager.h"
 #include"../Default/entity.h"
@@ -19,11 +19,14 @@ private:
 	Entity myShop;
 	//生成するキャラクターのリスト
 	vector<CharacterType>formCharacterTypes;
-	
+	//自分がいまどこの列にいるか
+	int currentRow;
 
 private:
 	void formSelectCharacter(CharacterType type);
 	void formCharacter();
+	void setCurrentRow();
+	Vector2 formPosition();
 public:
 	FormCharacter();
 	FormCharacter(GameManager *gameManager,Entity &myShop,int playerNum);

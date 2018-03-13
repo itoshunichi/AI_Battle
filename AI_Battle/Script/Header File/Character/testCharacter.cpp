@@ -4,12 +4,13 @@ TestCharacter::TestCharacter()
 {
 
 }
-TestCharacter::TestCharacter(GameManager *gameManager,Vector2 position,int playerNum)
+TestCharacter::TestCharacter(GameManager *gameManager, Vector2 position, int playerNum, int currentRow)
 {
 	this->gameManager = gameManager;
 	this->playerNum = playerNum;
-	this->position = position;
+	this->currentRow = currentRow;
 	currentImage = gameManager->getImageManager()->getTestCharacter_Image();
+	this->position = position - vector2(0, currentImage.getHeight());
 }
 
 TestCharacter::~TestCharacter()

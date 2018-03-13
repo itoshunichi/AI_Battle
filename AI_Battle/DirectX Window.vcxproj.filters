@@ -154,10 +154,10 @@
     <ClInclude Include="Script\Header File\Facility\shop.h">
       <Filter>HeaderFile\Shop</Filter>
     </ClInclude>
-    <ClInclude Include="Script\Header File\Character\formCharacterPoint.h">
+    <ClInclude Include="Script\Header File\Character\characterType.h">
       <Filter>HeaderFile\Character</Filter>
     </ClInclude>
-    <ClInclude Include="Script\Header File\Character\characterType.h">
+    <ClInclude Include="Script\Header File\Character\formCharacter.h">
       <Filter>HeaderFile\Character</Filter>
     </ClInclude>
   </ItemGroup>
@@ -249,7 +249,7 @@
     <ClCompile Include="Script\Source File\Facility\Shop.cpp">
       <Filter>Source FIle\Shop</Filter>
     </ClCompile>
-    <ClCompile Include="Script\Source File\Character\FormCharacterPoint.cpp">
+    <ClCompile Include="Script\Source File\Character\FormCharacter.cpp">
       <Filter>Source FIle\Character</Filter>
     </ClCompile>
   </ItemGroup>

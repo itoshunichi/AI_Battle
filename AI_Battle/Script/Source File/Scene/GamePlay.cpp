@@ -42,6 +42,7 @@ void GamePlay::initialize()
 	formCharacterPoint2->addCharacterType(CharacterType::TESTCHARACTER);
 	formCharacterPoint2->addCharacterType(CharacterType::TESTCHARACTER);
 	isEnd = false;
+	backImage = gameManager->getImageManager()->getBackGround_Image();
 
 }
 
@@ -64,8 +65,9 @@ void GamePlay::update(float frameTime)
 /*•`‰æ*/
 void GamePlay::draw()
 {
-	facility_1->draw();
-	facility_2->draw();
+	backImage.draw();
+	//facility_1->draw();
+	//facility_2->draw();
 	formCharacterPoint1->draw();
 	formCharacterPoint2->draw();
 	fade.draw();

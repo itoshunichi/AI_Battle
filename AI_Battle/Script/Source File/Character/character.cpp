@@ -4,6 +4,7 @@ Character::Character()
 {
 	collisionTag = entityNS::COLLISION_TAG::CHARACTER;
 	collisionType = entityNS::COLLISION_TYPE::BOX;
+
 }
 
 Character::~Character()

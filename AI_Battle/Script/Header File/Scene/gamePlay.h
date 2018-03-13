@@ -10,10 +10,10 @@
 class GamePlay:public Scene
 {
 private:
+	Image backImage;
 	Console *console;
 	Shop *facility_1;
 	Shop *facility_2;
-	TestCharacter *testCharacter;
 	FormCharacter *formCharacterPoint1;
 	FormCharacter *formCharacterPoint2;
 

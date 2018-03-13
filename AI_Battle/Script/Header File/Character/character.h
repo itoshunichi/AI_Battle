@@ -62,6 +62,8 @@ protected:
 	Entity myShop;
 	//‘Šè‚Ì“X
 	Entity otherShop;
+	//Œ»İ‚Ì—ñ
+	int currentRow;
 
 protected:
 	void setPosition();
