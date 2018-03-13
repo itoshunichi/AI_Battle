@@ -15,6 +15,7 @@ namespace TextureName
 	const char FADE_TEXTURE[] = "pictures\\fade.png";
 	const char AITEMICON_TEXTURE[] = "pictures\\aitemIcon.png";
 	const char TESTPLAYER_TEXTURE[] = "pictures\\character.png";
+	const char FORMCHARACTERPOINT_TEXTURE[] = "pictures\\point.png";
 }
 
 class ImageManager
@@ -23,6 +24,7 @@ private:
 	TextureManager* facility_TextureManager;
 	TextureManager* aitemIcon_TextureManager;
 	TextureManager* testCharacter_TextureManager;
+	TextureManager* formCharacterPoint_TextureManager;
 	//TextureManager
 	TextureManager* player_wait;
 	TextureManager* fade;
@@ -36,6 +38,7 @@ private:
 	Image aitemIcon_image;
 	Image testCharacter_image;
 	Image player_wait_image;
+	Image formCharacterPoint_image;
 
 	Image hp_Image;
 	Image wall_Image;
@@ -65,6 +68,7 @@ public:
 	Image getWallImage(){ return wall_Image; }
 	Image getTestPointImage(){ return testPoint_Image; }
 	Image getWT_Enemy_Wait_Image(){ return WT_Enemey_wait_Image; }
+	Image getFormCharacterPoint_Image(){ return formCharacterPoint_image; }
 };
 
 #endif

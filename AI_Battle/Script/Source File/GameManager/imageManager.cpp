@@ -6,7 +6,8 @@ ImageManager::ImageManager()
 	fade = new TextureManager(TextureName::FADE_TEXTURE);
 	aitemIcon_TextureManager = new TextureManager(TextureName::AITEMICON_TEXTURE);
 	testCharacter_TextureManager = new TextureManager(TextureName::TESTPLAYER_TEXTURE);
-	textures = {facility_TextureManager,fade,aitemIcon_TextureManager,testCharacter_TextureManager};
+	formCharacterPoint_TextureManager = new TextureManager(TextureName::FORMCHARACTERPOINT_TEXTURE);
+	textures = {facility_TextureManager,fade,aitemIcon_TextureManager,testCharacter_TextureManager,formCharacterPoint_TextureManager};
 }
 
 void ImageManager::initialize(Graphics *g)
@@ -20,6 +21,7 @@ void ImageManager::initialize(Graphics *g)
 	fadeImage.initialize(g, 0, 0, 0, fade);
 	aitemIcon_image.initialize(g, 0, 0, 0, aitemIcon_TextureManager);
 	testCharacter_image.initialize(g, 0, 0, 0, testCharacter_TextureManager);
+	formCharacterPoint_image.initialize(g, 0, 0, 0, formCharacterPoint_TextureManager);
 	/*player_wait_image.initialize(g, 128, 128, 4, player_wait);
 	hp_Image.initialize(g, 0, 0, 0, hp);
 	wall_Image.initialize(g, 0, 0, 0, wall);

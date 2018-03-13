@@ -86,11 +86,12 @@ private:
 	ControllerState controllers[MAX_CONTROLLERS]; //コントローラーの状態
 	bool ispush;
 	int Count;
-	
+
 public:
 	Input();//コンストラクタ
 	~Input();//デストラクタ
 	void initialize(HWND hwnd, bool capture);//初期化
+	void update(float frameTime, UINT n);
 	void keyDown(WPARAM wParam);
 	void keyUp(WPARAM wParam);
 	void keyIn(WPARAM wParam);
@@ -135,26 +136,9 @@ public:
 	int getMouseRawY()const { return mouseRawY; }
 	//左マウスボタンの状態を戻す
 	bool getMouseLButton(bool isTrigger)
-	{ 
-		if (isTrigger)
-		{
-			if (mouseLButton)
-			{
-				Count++;
-			}
-			else
-				Count = 0;
-			if (Count == 1)
-			{
-				return true;
-			}
-			else
-			{
-				return false;
-			}
-		}
-		else return mouseLButton;
-		 
+	{
+		return mouseLButton;
+
 	}
 	//中央マウスボタンの状態を戻す
 	bool getMouseMButton(bool isTrigger)const{ return mouseMButton; }
@@ -180,167 +164,495 @@ public:
 	{
 		if (n > MAX_CONTROLLERS - 1)
 			n = MAX_CONTROLLERS - 1;
-		return controllers[n].state.Gamepad.wButtons;
+
+		return(controllers[n].state.Gamepad.wButtons);
 	}
-	
+
 	//コントローラnの方向パッド上の状態を戻す
-	bool getGamepadDPadUp(UINT n)
+	bool getGamepadDPadUp(UINT n, bool isTrigger)
 	{
 		if (n > MAX_CONTROLLERS - 1)
 			n = MAX_CONTROLLERS - 1;
-		return ((controllers[n].state.Gamepad.wButtons&GAMEPAD_DPAD_UP) != 0);
+		if (isTrigger)
+		{
+			if ((getGamepadButtons(n)&GAMEPAD_DPAD_UP) != 0)
+			{
+				Count++;
+				if (Count == 1)
+				{
+					return true;
+				}
+				else
+				{
+					return false;
+				}
+			}
+			return false;
+		}
+		else
+			return ((controllers[n].state.Gamepad.wButtons&GAMEPAD_DPAD_UP) != 0);
+
 	}
 
 	//コントローラnの方向パッド下の状態を戻す
-	bool getGamepadDPadDown(UINT n)
+	bool getGamepadDPadDown(UINT n, bool isTrigger)
 	{
 		if (n > MAX_CONTROLLERS - 1)
 			n = MAX_CONTROLLERS - 1;
+		if (isTrigger)
+		{
+			if ((getGamepadButtons(n)&GAMEPAD_DPAD_DOWN) != 0)
+			{
+				Count++;
+				if (Count == 1)
+				{
+					return true;
+				}
+				else
+				{
+					return false;
+				}
+			}
+			return false;
+			
+		}
+		else
 		return ((controllers[n].state.Gamepad.wButtons&GAMEPAD_DPAD_DOWN) != 0);
 	}
 
 	// コントローラnの方向パッド左の状態を戻す
-	bool getGamepadDPadLeft(UINT n)
+	bool getGamepadDPadLeft(UINT n, bool isTrigger)
 	{
 		if (n > MAX_CONTROLLERS - 1)
 			n = MAX_CONTROLLERS - 1;
-		return ((controllers[n].state.Gamepad.wButtons&GAMEPAD_DPAD_LEFT) != 0);
+		if (isTrigger)
+		{
+			if ((getGamepadButtons(n)&GAMEPAD_DPAD_LEFT) != 0)
+			{
+				Count++;
+				if (Count == 1)
+				{
+					return true;
+				}
+				else
+				{
+					return false;
+				}
+			}
+			return false;
+		}
+		else return ((controllers[n].state.Gamepad.wButtons&GAMEPAD_DPAD_LEFT) != 0);
 	}
 
 	//コントローラnの方向パッド右の状態を戻す
-	bool getGamepadDPadRight(UINT n)
+	bool getGamepadDPadRight(UINT n, bool isTrigger)
 	{
 		if (n > MAX_CONTROLLERS - 1)
 			n = MAX_CONTROLLERS - 1;
-		return bool((controllers[n].state.Gamepad.wButtons&GAMEPAD_DPAD_RIGHT) != 0);
+		if (isTrigger)
+		{
+			if ((getGamepadButtons(n)&GAMEPAD_DPAD_RIGHT) != 0)
+			{
+				Count++;
+				if (Count == 1)
+				{
+
+					return true;
+				}
+				else
+				{
+					return false;
+				}
+			}
+			return false;
+			
+		}
+		else return bool((controllers[n].state.Gamepad.wButtons&GAMEPAD_DPAD_RIGHT) != 0);
 	}
 
 	// コントローラnのSTARTボタンの状態を戻す
-	bool getGamepadStart(UINT n)
+	bool getGamepadStart(UINT n, bool isTrigger)
 	{
 		if (n > MAX_CONTROLLERS - 1)
 			n = MAX_CONTROLLERS - 1;
-		return bool((controllers[n].state.Gamepad.wButtons&GAMEPAD_START_BUTTON) != 0);
+		if (isTrigger)
+		{
+			if ((getGamepadButtons(n)&GAMEPAD_START_BUTTON) != 0)
+			{
+				Count++;
+				if (Count == 1)
+				{
+					return true;
+				}
+				else
+				{
+					return false;
+				}
+
+			}
+			return false;
+			
+		}
+		else return bool((controllers[n].state.Gamepad.wButtons&GAMEPAD_START_BUTTON) != 0);
 	}
 
 	//コントローラnのBACKボタンの状態を戻す
-	bool getGamepadBack(UINT n)
+	bool getGamepadBack(UINT n, bool isTrigger)
 	{
 		if (n > MAX_CONTROLLERS - 1)
 			n = MAX_CONTROLLERS - 1;
-		return bool((controllers[n].state.Gamepad.wButtons&GAMEPAD_BACK_BUTTON) != 0);
+		if (isTrigger)
+		{
+			if ((getGamepadButtons(n)&GAMEPAD_BACK_BUTTON) != 0)
+			{
+				Count++;
+				if (Count == 1)
+				{
+					return true;
+				}
+				else
+				{
+					return false;
+				}
+			}
+			return false;
+		}
+		else return bool((controllers[n].state.Gamepad.wButtons&GAMEPAD_BACK_BUTTON) != 0);
 	}
 
 	// コントローラnの左サムボタンの状態を戻す
-	bool getGamepadLeftThumb(UINT n)
+	bool getGamepadLeftThumb(UINT n, bool isTrigger)
 	{
 		if (n > MAX_CONTROLLERS - 1)
 			n = MAX_CONTROLLERS - 1;
-		return bool((controllers[n].state.Gamepad.wButtons&GAMEPAD_LEFT_THUMB) != 0);
+		if (isTrigger)
+		{
+			if ((getGamepadButtons(n)&GAMEPAD_LEFT_THUMB) != 0)
+			{
+				Count++;
+				if (Count == 1)
+				{
+					return true;
+				}
+				else
+				{
+					return false;
+				}
+			}
+		}
+		else return bool((controllers[n].state.Gamepad.wButtons&GAMEPAD_LEFT_THUMB) != 0);
 	}
 
 	// コントローラnの右サムボタンの状態を戻す
-	bool getGamepadRightThumb(UINT n)
+	bool getGamepadRightThumb(UINT n, bool isTrigger)
 	{
 		if (n > MAX_CONTROLLERS - 1)
 			n = MAX_CONTROLLERS - 1;
-		return bool((controllers[n].state.Gamepad.wButtons&GAMEPAD_RIGHT_THUMB) != 0);
+		if (isTrigger)
+		{
+			if ((getGamepadButtons(n)&GAMEPAD_RIGHT_THUMB) != 0)
+			{
+				Count++;
+				if (Count == 1)
+				{
+					return true;
+				}
+				else
+				{
+					return false;
+				}
+			}
+			return false;
+		}
+		else return bool((controllers[n].state.Gamepad.wButtons&GAMEPAD_RIGHT_THUMB) != 0);
 	}
 
 	//コントローラnの左ショルダーボタンの状態を戻す
-	bool getGamepadLeftShoulder(UINT n)
+	bool getGamepadLeftShoulder(UINT n, bool isTrigger)
 	{
 		if (n > MAX_CONTROLLERS - 1)
 			n = MAX_CONTROLLERS - 1;
-		return bool((controllers[n].state.Gamepad.wButtons&GAMEPAD_LEFT_SHOULDER) != 0);
+		if (isTrigger)
+		{
+			if ((getGamepadButtons(n)&GAMEPAD_LEFT_SHOULDER) != 0)
+			{
+				Count++;
+				if (Count == 1)
+				{
+					return true;
+				}
+				else
+				{
+					return false;
+				}
+			}
+			return false;
+		}
+		else return bool((controllers[n].state.Gamepad.wButtons&GAMEPAD_LEFT_SHOULDER) != 0);
 	}
 
 	// コントローラnの右ショルダーボタンの状態を戻す
-	bool getGamepadRightShoulder(UINT n)
+	bool getGamepadRightShoulder(UINT n, bool isTrigger)
 	{
 		if (n > MAX_CONTROLLERS - 1)
 			n = MAX_CONTROLLERS - 1;
-		return bool((controllers[n].state.Gamepad.wButtons&GAMEPAD_RIGHT_SHOULDER) != 0);
+		if (isTrigger)
+		{
+			if ((getGamepadButtons(n)&GAMEPAD_RIGHT_SHOULDER) != 0)
+			{
+				Count++;
+				if (Count == 1)
+				{
+					return true;
+				}
+				else
+				{
+					return false;
+				}
+			}
+			return false;
+		}
+		else return bool((controllers[n].state.Gamepad.wButtons&GAMEPAD_RIGHT_SHOULDER) != 0);
 	}
 
 	//コントローラnのAボタンの状態を戻す
-	bool getGamepadA(UINT n)
+	bool getGamepadA(UINT n, bool isTrigger)
 	{
 		if (n > MAX_CONTROLLERS - 1)
 			n = MAX_CONTROLLERS - 1;
-		return bool((controllers[n].state.Gamepad.wButtons&GAMEPAD_A) != 0);
+		if (isTrigger)
+		{
+			if ((getGamepadButtons(n)&GAMEPAD_A) != 0)
+			{
+				Count++;
+				if (Count == 1)
+				{
+					return true;
+				}
+				else
+				{
+					return false;
+				}
+			}
+			return false;
+		}
+		else return bool((controllers[n].state.Gamepad.wButtons&GAMEPAD_A) != 0);
 	}
 
 	//コントローラnのBボタンの状態を戻す
-	bool getGamepadB(UINT n)
+	bool getGamepadB(UINT n, bool isTrigger)
 	{
 		if (n > MAX_CONTROLLERS - 1)
 			n = MAX_CONTROLLERS - 1;
-		return bool((controllers[n].state.Gamepad.wButtons&GAMEPAD_B) != 0);
+		if (isTrigger)
+		{
+			if ((getGamepadButtons(n)&GAMEPAD_B) != 0)
+			{
+				Count++;
+				if (Count == 1)
+				{
+					return true;
+				}
+				else
+				{
+					return false;
+				}
+			}
+			return false;
+		}
+		else return bool((controllers[n].state.Gamepad.wButtons&GAMEPAD_B) != 0);
 	}
 
 	//コントローラnのXボタンの状態を戻す
-	bool getGamepadX(UINT n)
+	bool getGamepadX(UINT n, bool isTrigger)
 	{
 		if (n > MAX_CONTROLLERS - 1)
 			n = MAX_CONTROLLERS - 1;
-		return bool((controllers[n].state.Gamepad.wButtons&GAMEPAD_X) != 0);
+		if (isTrigger)
+		{
+			if ((getGamepadButtons(n)&GAMEPAD_X) != 0)
+			{
+				Count++;
+				if (Count == 1)
+				{
+					return true;
+				}
+				else
+				{
+					return false;
+				}
+			}
+			return false;
+		}
+		else return bool((controllers[n].state.Gamepad.wButtons&GAMEPAD_X) != 0);
 	}
 
 	//コントローラnのYボタンの状態を戻す
-	bool getGamepadY(UINT n)
+	bool getGamepadY(UINT n, bool isTrigger)
 	{
 		if (n > MAX_CONTROLLERS - 1)
 			n = MAX_CONTROLLERS - 1;
-		return bool((controllers[n].state.Gamepad.wButtons&GAMEPAD_Y) != 0);
+		if (isTrigger)
+		{
+			if ((getGamepadButtons(n)&GAMEPAD_Y) != 0)
+			{
+				Count++;
+				if (Count == 1)
+				{
+					return true;
+				}
+				else
+				{
+					return false;
+				}
+			}
+			return false;
+		}
+		else return bool((controllers[n].state.Gamepad.wButtons&GAMEPAD_Y) != 0);
 	}
 
 	//コントローラnの左トリガーの値を戻します
-	BYTE getGamepadLeftTrigger(UINT n)
+	BYTE getGamepadLeftTrigger(UINT n, bool isTrigger)
 	{
 		if (n > MAX_CONTROLLERS - 1)
 			n = MAX_CONTROLLERS - 1;
-		return (controllers[n].state.Gamepad.bLeftTrigger);
+		if (isTrigger)
+		{
+			if (controllers[n].state.Gamepad.bLeftTrigger)
+			{
+				Count++;
+				if (Count == 1)
+				{
+					return true;
+				}
+				else
+				{
+					return false;
+				}
+			}
+			return false;
+		}
+		else return (controllers[n].state.Gamepad.bLeftTrigger);
 	}
 
 	////コントローラnの右トリガーの値を戻します
-	BYTE getGamepadRightTrigger(UINT n)
+	BYTE getGamepadRightTrigger(UINT n, bool isTrigger)
 	{
 		if (n > MAX_CONTROLLERS - 1)
 			n = MAX_CONTROLLERS - 1;
-		return (controllers[n].state.Gamepad.bRightTrigger);
+		if (isTrigger)
+		{
+			if (controllers[n].state.Gamepad.bRightTrigger)
+			{
+				Count++;
+				if (Count == 1)
+				{
+					return true;
+				}
+				else
+				{
+					return false;
+				}
+			}
+			return false;
+		}
+		else return (controllers[n].state.Gamepad.bRightTrigger);
 	}
 
 	//コントローラnの左サムスティック、Xの値を戻します
-	SHORT getGamepadThumbLX(UINT n)
+	SHORT getGamepadThumbLX(UINT n, bool isTrigger)
 	{
 		if (n > MAX_CONTROLLERS - 1)
 			n = MAX_CONTROLLERS - 1;
-		return (controllers[n].state.Gamepad.sThumbLX)/10000;
+		if (isTrigger)
+		{
+			if (controllers[n].state.Gamepad.sThumbLX)
+			{
+				Count++;
+				if (Count == 1)
+				{
+					return true;
+				}
+				else
+				{
+					return false;
+				}
+			}
+			return false;
+		}
+		else return (controllers[n].state.Gamepad.sThumbLX) / 10000;
 	}
 
 	////コントローラnの左サムスティック、Yの値を戻します
-	SHORT getGamepadThumbLY(UINT n)
+	SHORT getGamepadThumbLY(UINT n, bool isTrigger)
 	{
 		if (n > MAX_CONTROLLERS - 1)
 			n = MAX_CONTROLLERS - 1;
-		return (controllers[n].state.Gamepad.sThumbLY)/10000;
+		if (isTrigger)
+		{
+			if (controllers[n].state.Gamepad.sThumbLY)
+			{
+				Count++;
+				if (Count == 1)
+				{
+					return true;
+				}
+				else
+				{
+					return false;
+				}
+			}
+			return false;
+		}
+		else return (controllers[n].state.Gamepad.sThumbLY) / 10000;
 	}
 
 	////コントローラnの右サムスティック、Xの値を戻します
-	SHORT getGamepadThumbRX(UINT n)
+	SHORT getGamepadThumbRX(UINT n, bool isTrigger)
 	{
 		if (n > MAX_CONTROLLERS - 1)
 			n = MAX_CONTROLLERS - 1;
-		return (controllers[n].state.Gamepad.sThumbRX);
+		if (isTrigger)
+		{
+			if (controllers[n].state.Gamepad.sThumbRX)
+			{
+				Count++;
+				if (Count == 1)
+				{
+					return true;
+				}
+				else
+				{
+					return false;
+				}
+			}
+			return false;
+		}
+		else return (controllers[n].state.Gamepad.sThumbRX) / 10000;
 	}
 
 	////コントローラnの右サムスティック、Yの値を戻します
-	SHORT getGamepadThumbRY(UINT n)
+	SHORT getGamepadThumbRY(UINT n, bool isTrigger)
 	{
 		if (n > MAX_CONTROLLERS - 1)
 			n = MAX_CONTROLLERS - 1;
-		return (controllers[n].state.Gamepad.sThumbRY);
+		if (isTrigger)
+		{
+			if (controllers[n].state.Gamepad.sThumbRY)
+			{
+				Count++;
+				if (Count == 1)
+				{
+					return true;
+				}
+				else
+				{
+					return false;
+				}
+			}
+			return false;
+		}
+		else return (controllers[n].state.Gamepad.sThumbRY) / 10000;
 	}
 
 	// コントローラnの左モーターを振動させる
@@ -371,6 +683,6 @@ public:
 
 
 	int getCount(){ return Count; }
-			
+
 };
 #endif

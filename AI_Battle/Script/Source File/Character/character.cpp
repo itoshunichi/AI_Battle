@@ -49,7 +49,7 @@ void Character::appearance()
 		direction = Direction::RIGHT;
 	}
 	//2P‚¾‚Á‚½‚ç
-	else
+	else if (playerNum == 2)
 	{
 		direction = Direction::LEFT;
 	}
@@ -68,6 +68,8 @@ void Character::otherShopCollision(Entity &entity,int &customerCount)
 			customerCount--;
 		}
 	}
+	
+
 }
 
 void Character::myShopColiision(Entity &entity, int &customerCount)

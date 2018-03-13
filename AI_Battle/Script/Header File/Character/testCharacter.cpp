@@ -4,10 +4,12 @@ TestCharacter::TestCharacter()
 {
 
 }
-TestCharacter::TestCharacter(GameManager *gameManager,int playerNum)
+TestCharacter::TestCharacter(GameManager *gameManager,Vector2 position,int playerNum)
 {
 	this->gameManager = gameManager;
 	this->playerNum = playerNum;
+	this->position = position;
+	currentImage = gameManager->getImageManager()->getTestCharacter_Image();
 }
 
 TestCharacter::~TestCharacter()
@@ -18,7 +20,7 @@ TestCharacter::~TestCharacter()
 void TestCharacter::initialize()
 {
 	states.moveSpeed = 200;
-	currentImage = gameManager->getImageManager()->getTestCharacter_Image();
+	
 	appearance();
 	mode = Mode::MOVE;
 	//position = vector2(0, 0);

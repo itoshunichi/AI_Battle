@@ -70,6 +70,14 @@ void Input::initialize(HWND hwnd, bool capture)
 	Count = 0;
 }
 
+void Input::update(float frameTime,UINT n)
+{
+	if (!getGamepadButtons(n))
+	{
+			Count = 0;
+	}
+}
+
 //このキーについて,keysDown配列とkeysPressed配列にtrueを設定
 //実行前:wParamに、仮想キーコード(0~255)が格納されている
 void Input::keyDown(WPARAM wParam)
@@ -132,19 +140,19 @@ bool Input::isKeyTrigger(UCHAR vkey)
 {
 	if (isKeyDown(vkey))
 	{
-		Count++;                
+		Count++;
+		if (Count == 1)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
-	else
-		Count = 0;
+	
 
-	if (Count == 1)
-	{
-		return true;
-	}
-	else
-	{
-		return false;
-	}
+	
 }
 
 

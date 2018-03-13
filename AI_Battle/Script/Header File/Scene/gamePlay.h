@@ -4,7 +4,7 @@
 #include"scene.h"
 #include"../Otherwise/timer.h"
 #include"../Facility/shop.h"
-#include"../Character/testCharacter.h"
+#include"../Character/formCharacter.h"
 
 
 class GamePlay:public Scene
@@ -14,6 +14,9 @@ private:
 	Shop *facility_1;
 	Shop *facility_2;
 	TestCharacter *testCharacter;
+	FormCharacter *formCharacterPoint1;
+	FormCharacter *formCharacterPoint2;
+
 	
 public:
 	//コンストラクタ

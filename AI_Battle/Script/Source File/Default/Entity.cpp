@@ -18,7 +18,7 @@ Entity::Entity()
 	collisionType = entityNS::BOX;
 	health = 100;
 	gravity = entityNS::GRAVITY;
-	center = vector2(0, 0);
+	center = position + vector2(currentImage.getWidth() / 2, currentImage.getHeight() / 2);
 }
 
 ////Entityを初期化
@@ -100,6 +100,8 @@ bool Entity::collideWith(Entity &ent,entityNS::COLLISION_TAG collisionTag)
 			return ent.collideRotatedBoxCircle(*this);
 		else//もう一方のエンティティがCIRCLE衝突を使用する場合
 			return collideRotatedBoxCircle(ent);
+
+	return false;
 
 
 }
