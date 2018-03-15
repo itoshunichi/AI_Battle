@@ -12,6 +12,7 @@ class FormCharacter
 {
 private:
 	GameManager *gameManager;
+	//FormCharacter &otherFormCharacter = FormCharacter();
 	Input *input;
 	Image image;
 	Vector2 position;
@@ -21,22 +22,37 @@ private:
 	vector<CharacterType>formCharacterTypes;
 	//自分がいまどこの列にいるか
 	int currentRow;
+	//生成するキャラクターのリスト
+	list<Character*>formCharacters;
+	//1列目のキャラ
+	list<Character*>firstColumnCharacters;
+	//2列目のキャラ
+	list<Character*>secondColumnCharacters;
+	//3列目のキャラ
+	list<Character*>thirdColumnCharacters;
 
 private:
 	void formSelectCharacter(CharacterType type);
 	void formCharacter();
 	void setCurrentRow();
 	Vector2 formPosition();
+	void removeCharacter();
 public:
 	FormCharacter();
 	FormCharacter(GameManager *gameManager,Entity &myShop,int playerNum);
 	~FormCharacter();
 	void initalize();
-	void update(float frameTime);
+	void update(float frameTime,FormCharacter &formCharacter);
 	void draw();
 	void move();
 	void addCharacterType(CharacterType type){ formCharacterTypes.push_back(type); }
-	vector<Character*>formCharacters;
+	//列ごとのリストに追加
+	void addColumnCharacters(Character* character);
+	
+	list<Character*>getFormCharacters(){ return formCharacters; }
+	list<Character*>getFirstColumnCharacters(){ return firstColumnCharacters; }
+	list<Character*>getSecondColumnCharacters(){ return secondColumnCharacters; }
+	list<Character*>getThirdColumnCharacters(){ return thirdColumnCharacters; }
 	//vector<Character*>*getFormCharacters{ return &formCharacters; }
 };
 

@@ -32,7 +32,7 @@ Vector2 normalize(const Vector2& v)
 }
 
 //2“_ŠÔ‚Ì‹——£‚ğ‹‚ß‚é
-float distance(const Vector2& my, const Vector2& target)
+float Distance(const Vector2& my, const Vector2& target)
 {
 	return length(target - my);
 }

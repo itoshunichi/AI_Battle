@@ -160,6 +160,9 @@
     <ClInclude Include="Script\Header File\Character\formCharacter.h">
       <Filter>HeaderFile\Character</Filter>
     </ClInclude>
+    <ClInclude Include="Script\Header File\Character\characterManager.h">
+      <Filter>HeaderFile\Character</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Script\Source File\Character\character.cpp">
@@ -250,6 +253,9 @@
       <Filter>Source FIle\Shop</Filter>
     </ClCompile>
     <ClCompile Include="Script\Source File\Character\FormCharacter.cpp">
+      <Filter>Source FIle\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="Script\Source File\Character\CharacterManager.cpp">
       <Filter>Source FIle\Character</Filter>
     </ClCompile>
   </ItemGroup>

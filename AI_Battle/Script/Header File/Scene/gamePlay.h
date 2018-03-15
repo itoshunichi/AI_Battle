@@ -5,6 +5,7 @@
 #include"../Otherwise/timer.h"
 #include"../Facility/shop.h"
 #include"../Character/formCharacter.h"
+#include"../Character/characterManager.h"
 
 
 class GamePlay:public Scene
@@ -16,7 +17,7 @@ private:
 	Shop *facility_2;
 	FormCharacter *formCharacterPoint1;
 	FormCharacter *formCharacterPoint2;
-
+	CharacterManager characterManager;
 	
 public:
 	//コンストラクタ

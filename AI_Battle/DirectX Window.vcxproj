@@ -12,6 +12,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Script\Header File\Character\character.h" />
+    <ClInclude Include="Script\Header File\Character\characterManager.h" />
     <ClInclude Include="Script\Header File\Character\characterType.h" />
     <ClInclude Include="Script\Header File\Character\direction.h" />
     <ClInclude Include="Script\Header File\Character\formCharacter.h" />
@@ -50,6 +51,7 @@
   <ItemGroup>
     <ClCompile Include="Script\Header File\Character\TestCharacter.cpp" />
     <ClCompile Include="Script\Source File\Character\character.cpp" />
+    <ClCompile Include="Script\Source File\Character\CharacterManager.cpp" />
     <ClCompile Include="Script\Source File\Character\FormCharacter.cpp" />
     <ClCompile Include="Script\Source File\Character\square.cpp" />
     <ClCompile Include="Script\Source File\Default\Console.cpp" />

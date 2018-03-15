@@ -44,6 +44,7 @@ void Character::move(float frameTime)
 //“oê‚Ìˆ—
 void Character::appearance()
 {
+	attackTimer = Timer(states.attackTime);
 	//1P‚¾‚Á‚½‚ç
 	if (playerNum == 1)
 	{
@@ -57,7 +58,7 @@ void Character::appearance()
 }
 
 //‘Šè‚Ì“X‚Æ‚Ì‚ ‚½‚è”»’è
-void Character::otherShopCollision(Entity &entity,int &customerCount)
+void Character::otherShopCollision(Entity &entity, int &customerCount)
 {
 	//1P‚©‚Â‰EŒü‚«‚Ü‚½‚Í2P‚©‚Â¶Œü‚«
 	if ((playerNum == 1 && direction == Direction::RIGHT) || (playerNum == 2 && direction == Direction::LEFT))
@@ -69,7 +70,7 @@ void Character::otherShopCollision(Entity &entity,int &customerCount)
 			customerCount--;
 		}
 	}
-	
+
 
 }
 
@@ -87,6 +88,19 @@ void Character::myShopColiision(Entity &entity, int &customerCount)
 	}
 }
 
+//UŒ‚ŠJn
+void Character::startAttack(Character* character)
+{
+	attackTargetCharacter = nullptr;
+	attackTargetCharacter = character;
+	//ˆÚ“®’†‚©‚ÂUŒ‚”ÍˆÍ‚É“G‚ª‚¢‚é‚©‚Ç‚¤‚©
+	if (mode == Mode::MOVE&&Distance(position, character->getPosition()) < states.attackRange)
+	{
+		mode = Mode::ATTACK;
+	}
+
+}
+
 //Œü‚«‚Ì•ÏX
 void Character::changeDirection()
 {
@@ -97,5 +111,44 @@ void Character::changeDirection()
 	else if (direction == Direction::LEFT)
 	{
 		direction = Direction::RIGHT;
+	}
+}
+
+//UŒ‚ˆ—
+void Character::attack(float frameTime)
+{
+	if (mode == Mode::ATTACK)
+	{
+		attackTimer.update(frameTime);
+		if (attackTimer.isEnd())
+		{
+			//‹ßÚ‚È‚ç
+			if (attackType = AttackType::PROXIMITY)
+			{
+				//ƒ_ƒ[ƒW‚ğ’¼Ú—^‚¦‚é
+				attackTargetCharacter->damage(states.attackPower);
+			}
+			//‰“‹——£‚È‚ç
+			if (attackType = AttackType::LONG_DISTANCE)
+			{
+				//UŒ‚‚ğ¶¬
+			}
+
+			attackTimer.resetTimer();
+		}
+	}
+}
+
+//ˆø”‚Åw’è‚µ‚½ƒ_ƒ[ƒW—Ê‚ğHp‚©‚çŒ¸‚ç‚·
+void Character::damage(float damage)
+{
+	states.hp -= damage;
+}
+
+void Character::dead()
+{
+	if (mode == Mode::DEAD)
+	{
+		delete this;
 	}
 }

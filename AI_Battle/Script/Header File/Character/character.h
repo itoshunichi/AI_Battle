@@ -4,6 +4,7 @@
 #include"../Default/entity.h"
 #include"direction.h"
 #include"square.h"
+#include"../Otherwise/timer.h"
 
 class Character :public Entity
 {
@@ -64,8 +65,9 @@ protected:
 	Entity otherShop;
 	//Œ»Ý‚Ì—ñ
 	int currentRow;
-
+	Character* attackTargetCharacter;
 protected:
+
 	void setPosition();
 	//Šp“x‚ÌÝ’è
 	void setAngle();
@@ -73,6 +75,9 @@ protected:
 	void appearance();
 	//ˆÚ“®ˆ—
 	void move(float frameTime);
+	//UŒ‚ˆ—
+	void attack(float frameTime);
+	void dead();
 	//Œü‚«•ÏX
 	void changeDirection();
 public:
@@ -88,12 +93,18 @@ public:
 	virtual void otherShopCollision(Entity &entity,int &customerCount);
 	//Ž©•ª“X‚Æ‚ÌÕ“Ë”»’è
 	virtual void myShopColiision(Entity &entity, int &customerCout);
+	//UŒ‚ŠJŽn
+	void startAttack(Character* characters);
 	void setPosition(Vector2 position){ this->position = position; }
 	SQUARE getCurrentSquare(){ return currentSquare; }
+	void damage(float damage);
 	
-
+	//ó‘Ô‚Ì•ÏX
+	void changeMode(Mode mode){ this->mode = mode;}
+	int getHp(){ return states.hp; }
+	int getCurrentRow(){ return currentRow; }
 private:
-	
+	Timer attackTimer;
 	
 };
 

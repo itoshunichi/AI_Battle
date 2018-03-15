@@ -30,19 +30,23 @@ void GamePlay::initialize()
 	facility_2->initialize();
 	facility_2->setPosition(vector2(GAME_WIDTH - 128, 0));
 	formCharacterPoint1 = new FormCharacter(gameManager,*facility_1,1);
+	formCharacterPoint2 = new FormCharacter(gameManager, *facility_2, 2);
 	formCharacterPoint1->initalize();
-	formCharacterPoint1->addCharacterType(CharacterType::TESTCHARACTER);
-	formCharacterPoint1->addCharacterType(CharacterType::TESTCHARACTER);
-	formCharacterPoint1->addCharacterType(CharacterType::TESTCHARACTER);
-	formCharacterPoint1->addCharacterType(CharacterType::TESTCHARACTER);
-	formCharacterPoint2 = new FormCharacter(gameManager, *facility_2,2);
 	formCharacterPoint2->initalize();
+	formCharacterPoint1->addCharacterType(CharacterType::TESTCHARACTER);
+	formCharacterPoint1->addCharacterType(CharacterType::TESTCHARACTER);
+	formCharacterPoint1->addCharacterType(CharacterType::TESTCHARACTER);
+	formCharacterPoint1->addCharacterType(CharacterType::TESTCHARACTER);
+	
+	
 	formCharacterPoint2->addCharacterType(CharacterType::TESTCHARACTER);
 	formCharacterPoint2->addCharacterType(CharacterType::TESTCHARACTER);
 	formCharacterPoint2->addCharacterType(CharacterType::TESTCHARACTER);
 	formCharacterPoint2->addCharacterType(CharacterType::TESTCHARACTER);
 	isEnd = false;
 	backImage = gameManager->getImageManager()->getBackGround_Image();
+
+	characterManager = CharacterManager(formCharacterPoint1, formCharacterPoint2);
 
 }
 
@@ -58,8 +62,9 @@ void GamePlay::update(float frameTime)
 	fade.update();
 	facility_1->update(frameTime);
 	facility_2->update(frameTime);
-	formCharacterPoint1->update(frameTime);
-	formCharacterPoint2->update(frameTime);
+	formCharacterPoint1->update(frameTime,*formCharacterPoint2);
+	formCharacterPoint2->update(frameTime,*formCharacterPoint1);
+	characterManager.update(frameTime);
 }
 
 /*•`‰æ*/
@@ -76,16 +81,26 @@ void GamePlay::draw()
 
 void GamePlay::collision()
 {
-	for (int i = 0; i < formCharacterPoint1->formCharacters.size(); i++)
+	for each (Character* c in formCharacterPoint1->getFormCharacters())
 	{
-		formCharacterPoint1->formCharacters[i]->myShopColiision(*facility_1, facility_1->customerCount);
-		formCharacterPoint1->formCharacters[i]->otherShopCollision(*facility_2, facility_2->customerCount);
+		c->myShopColiision(*facility_1, facility_1->customerCount);
+		c->otherShopCollision(*facility_2, facility_2->customerCount);
 	}
-	for (int i = 0; i < formCharacterPoint2->formCharacters.size(); i++)
+	for each (Character* c in formCharacterPoint2->getFormCharacters())
 	{
-		formCharacterPoint2->formCharacters[i]->myShopColiision(*facility_2, facility_2->customerCount);
-		formCharacterPoint2->formCharacters[i]->otherShopCollision(*facility_1, facility_1->customerCount);
+		c->myShopColiision(*facility_1, facility_2->customerCount);
+		c->otherShopCollision(*facility_2, facility_1->customerCount);
 	}
+	/*for (int i = 0; i < formCharacterPoint1->getFormCharacters().size(); i++)
+	{
+		formCharacterPoint1->getFormCharacters()[i]->myShopColiision(*facility_1, facility_1->customerCount);
+		formCharacterPoint1->getFormCharacters()[i]->otherShopCollision(*facility_2, facility_2->customerCount);
+	}
+	for (int i = 0; i < formCharacterPoint2->getFormCharacters().size(); i++)
+	{
+		formCharacterPoint2->getFormCharacters()[i]->myShopColiision(*facility_2, facility_2->customerCount);
+		formCharacterPoint2->getFormCharacters()[i]->otherShopCollision(*facility_1, facility_1->customerCount);
+	}*/
 }
 
 

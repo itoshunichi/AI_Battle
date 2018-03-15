@@ -19,7 +19,7 @@ float length(const Vector2& v);
 //正規化する 
 Vector2 normalize(const Vector2& v);
 //2点間の距離を求める
-float distance(const Vector2&my, const Vector2& target);
+float Distance(const Vector2&my, const Vector2& target);
 //ターゲット方向への移動量を求める
 Vector2 velocity(const Vector2& my, const Vector2& targetf);
 //指定方向への移動量を求める

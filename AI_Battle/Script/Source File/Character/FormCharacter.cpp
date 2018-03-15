@@ -12,6 +12,7 @@ FormCharacter::FormCharacter(GameManager *gameManager, Entity &myShop, int playe
 	this->playerNum = playerNum;
 	image = gameManager->getImageManager()->getFormCharacterPoint_Image();
 	this->myShop = myShop;
+	//this->otherFormCharacter = otherFormCharacter;
 }
 
 FormCharacter::~FormCharacter()
@@ -36,26 +37,35 @@ void FormCharacter::initalize()
 //描画
 void FormCharacter::draw()
 {
-	for (int i = 0; i < formCharacters.size(); i++)
+	for each (Character* c in  formCharacters)
+	{
+		c->draw();
+	}
+	/*for (int i = 0; i < formCharacters.size(); i++)
 	{
 		formCharacters[i]->draw();
-	}
+	}*/
 	image.draw();
 }
 
 //更新
-void FormCharacter::update(float frameTime)
+void FormCharacter::update(float frameTime,FormCharacter &otherFormCharacter)
 {
 	image.setX(position.x);
 	image.setY(position.y);
-	for (int i = 0; i < formCharacters.size(); i++)
+	for each (Character* c in  formCharacters)
+	{
+		c->update(frameTime);
+	}
+	/*for (int i = 0; i < formCharacters.size(); i++)
 	{
 		formCharacters[i]->update(frameTime);
-	}
+	}*/
 	move();
 	formCharacter();
 	input->update(frameTime, 0);
 	setCurrentRow();
+	removeCharacter();
 }
 
 //移動処理
@@ -76,13 +86,39 @@ void FormCharacter::move()
 	}
 }
 
+//指定したキャラを生成
 void FormCharacter::formSelectCharacter(CharacterType type)
 {
+	Character* character = nullptr;
 	if (type == CharacterType::TESTCHARACTER)
 	{
-		formCharacters.push_back(new TestCharacter(gameManager, formPosition(),playerNum,currentRow));
-		formCharacters[formCharacters.size() - 1]->initialize();
-		
+		character = new TestCharacter(gameManager, formPosition(), playerNum, currentRow);
+		//formCharacters.push_back(new TestCharacter(gameManager, formPosition(), playerNum, currentRow));
+	}
+	character->initialize();
+	formCharacters.push_back(character);
+	//リストに追加
+	//formCharacters.push_back(character);
+	//キャラを初期化
+	//formCharacters[formCharacters.size()-1]->initialize();
+	//列ごとのリストに追加
+	addColumnCharacters(character);
+}
+
+//列ごとのリストに追加
+void FormCharacter::addColumnCharacters(Character* character)
+{
+	if (currentRow == 1)
+	{
+		firstColumnCharacters.push_back(character);
+	}
+	else if (currentRow == 2)
+	{
+		secondColumnCharacters.push_back(character);
+	}
+	else if (currentRow == 3)
+	{
+		thirdColumnCharacters.push_back(character);
 	}
 }
 
@@ -162,4 +198,12 @@ Vector2 FormCharacter::formPosition()
 	{
 		return vector2(position.x, 650);
 	}
+}
+
+void FormCharacter::removeCharacter()
+{
+	formCharacters.erase(remove_if(formCharacters.begin(), formCharacters.end(), ([](Character* c){return c->getHp() <= 0; })), formCharacters.end());
+	firstColumnCharacters.erase(remove_if(firstColumnCharacters.begin(), firstColumnCharacters.end(), ([](Character* c){return c->getHp() <= 0; })), firstColumnCharacters.end());
+	secondColumnCharacters.erase(remove_if(secondColumnCharacters.begin(), secondColumnCharacters.end(), ([](Character* c){return c->getHp() <= 0; })), secondColumnCharacters.end());
+	thirdColumnCharacters.erase(remove_if(thirdColumnCharacters.begin(), thirdColumnCharacters.end(), ([](Character* c){return c->getHp() <= 0; })), thirdColumnCharacters.end());
 }
