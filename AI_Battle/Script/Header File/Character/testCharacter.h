@@ -1,11 +1,11 @@
-#include"../Character/character.h"
+#include"../Character/proximityAttackCharacter.h"
+#include"Status\status_TestCharacter.h"
 
-
-class TestCharacter:public Character
+class TestCharacter:public ProximityAttackCharacter
 {
 public:
 	TestCharacter();
-	TestCharacter(GameManager *gameManager,Vector2 position,int pleryNum,int currentRow);
+	TestCharacter(GameManager *gameManager,Vector2 position,int pleryNum);
 	~TestCharacter();
 	void initialize();
 	void update(float frameTime);

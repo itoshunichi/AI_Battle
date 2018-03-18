@@ -5,6 +5,7 @@
 #include"direction.h"
 #include"square.h"
 #include"../Otherwise/timer.h"
+#include"Status\status.h"
 
 class Character :public Entity
 {
@@ -34,23 +35,13 @@ public:
 		LONG_DISTANCE,//遠距離
 
 	};
-	//ステータス
-	struct States
-	{
-		int hp;//体力
-		int attackPower;//攻撃力
-		float attackTime;//攻撃速度
-		float moveSpeed;//移動速度
-		float attackRange;//攻撃範囲
-
-	};
 protected:
 	//種類
 	Type type;
 	//攻撃方法
 	AttackType attackType;
 	//ステータス
-	States states;
+	Status* status;
 	//現在のマス
 	SQUARE currentSquare;
 	//現在の向き
@@ -65,6 +56,7 @@ protected:
 	Entity otherShop;
 	//現在の列
 	int currentRow;
+	int hp;
 	Character* attackTargetCharacter;
 protected:
 
@@ -76,7 +68,7 @@ protected:
 	//移動処理
 	void move(float frameTime);
 	//攻撃処理
-	void attack(float frameTime);
+	//void attack(float frameTime);
 	void dead();
 	//向き変更
 	void changeDirection();
@@ -98,14 +90,12 @@ public:
 	void setPosition(Vector2 position){ this->position = position; }
 	SQUARE getCurrentSquare(){ return currentSquare; }
 	void damage(float damage);
-	
+	//void collisionWeapon(Weapon& weapon);
 	//状態の変更
 	void changeMode(Mode mode){ this->mode = mode;}
-	int getHp(){ return states.hp; }
+	int getHp(){ return hp; }
 	int getCurrentRow(){ return currentRow; }
-private:
-	Timer attackTimer;
-	
+	Mode getMode(){ return mode; }
 };
 
 #endif

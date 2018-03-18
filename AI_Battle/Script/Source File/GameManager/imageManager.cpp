@@ -8,7 +8,10 @@ ImageManager::ImageManager()
 	testCharacter_TextureManager = new TextureManager(TextureName::TESTPLAYER_TEXTURE);
 	formCharacterPoint_TextureManager = new TextureManager(TextureName::FORMCHARACTERPOINT_TEXTURE);
 	backGround_TextureManager = new TextureManager(TextureName::BACKGROUND_TEXTURE);
-	textures = {facility_TextureManager,fade,aitemIcon_TextureManager,testCharacter_TextureManager,formCharacterPoint_TextureManager,backGround_TextureManager};
+	longAttackTestCharacter_TextureManager = new TextureManager(TextureName::LONGATTACKTESTCHARACTER_TEXTURE);
+	testWeapon_TextureManager = new TextureManager(TextureName::TESTWEAPON_TEXTURE);
+	textures = {facility_TextureManager,fade,aitemIcon_TextureManager,testCharacter_TextureManager,formCharacterPoint_TextureManager,backGround_TextureManager,
+	longAttackTestCharacter_TextureManager,testWeapon_TextureManager};
 }
 
 void ImageManager::initialize(Graphics *g)
@@ -24,6 +27,8 @@ void ImageManager::initialize(Graphics *g)
 	testCharacter_image.initialize(g, 0, 0, 0, testCharacter_TextureManager);
 	formCharacterPoint_image.initialize(g, 0, 0, 0, formCharacterPoint_TextureManager);
 	backGround_Imgae.initialize(g, 0, 0, 0, backGround_TextureManager);
+	longAttackTestCharacter_Image.initialize(g, 0, 0, 0, longAttackTestCharacter_TextureManager);
+	testWeapon_Image.initialize(g, 0, 0, 0, testWeapon_TextureManager);
 	/*player_wait_image.initialize(g, 128, 128, 4, player_wait);
 	hp_Image.initialize(g, 0, 0, 0, hp);
 	wall_Image.initialize(g, 0, 0, 0, wall);

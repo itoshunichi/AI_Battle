@@ -33,16 +33,16 @@ void GamePlay::initialize()
 	formCharacterPoint2 = new FormCharacter(gameManager, *facility_2, 2);
 	formCharacterPoint1->initalize();
 	formCharacterPoint2->initalize();
-	formCharacterPoint1->addCharacterType(CharacterType::TESTCHARACTER);
-	formCharacterPoint1->addCharacterType(CharacterType::TESTCHARACTER);
-	formCharacterPoint1->addCharacterType(CharacterType::TESTCHARACTER);
-	formCharacterPoint1->addCharacterType(CharacterType::TESTCHARACTER);
+	formCharacterPoint1->addFormCharacterType(CharacterType::TESTCHARACTER);
+	formCharacterPoint1->addFormCharacterType(CharacterType::LONGATTACKTESTCHARACTER);
+	formCharacterPoint1->addFormCharacterType(CharacterType::TESTCHARACTER);
+	formCharacterPoint1->addFormCharacterType(CharacterType::TESTCHARACTER);
 	
 	
-	formCharacterPoint2->addCharacterType(CharacterType::TESTCHARACTER);
-	formCharacterPoint2->addCharacterType(CharacterType::TESTCHARACTER);
-	formCharacterPoint2->addCharacterType(CharacterType::TESTCHARACTER);
-	formCharacterPoint2->addCharacterType(CharacterType::TESTCHARACTER);
+	formCharacterPoint2->addFormCharacterType(CharacterType::TESTCHARACTER);
+	formCharacterPoint2->addFormCharacterType(CharacterType::LONGATTACKTESTCHARACTER);
+	formCharacterPoint2->addFormCharacterType(CharacterType::TESTCHARACTER);
+	formCharacterPoint2->addFormCharacterType(CharacterType::TESTCHARACTER);
 	isEnd = false;
 	backImage = gameManager->getImageManager()->getBackGround_Image();
 
@@ -88,19 +88,10 @@ void GamePlay::collision()
 	}
 	for each (Character* c in formCharacterPoint2->getFormCharacters())
 	{
-		c->myShopColiision(*facility_1, facility_2->customerCount);
-		c->otherShopCollision(*facility_2, facility_1->customerCount);
+		c->myShopColiision(*facility_2, facility_2->customerCount);
+		c->otherShopCollision(*facility_1, facility_1->customerCount);
 	}
-	/*for (int i = 0; i < formCharacterPoint1->getFormCharacters().size(); i++)
-	{
-		formCharacterPoint1->getFormCharacters()[i]->myShopColiision(*facility_1, facility_1->customerCount);
-		formCharacterPoint1->getFormCharacters()[i]->otherShopCollision(*facility_2, facility_2->customerCount);
-	}
-	for (int i = 0; i < formCharacterPoint2->getFormCharacters().size(); i++)
-	{
-		formCharacterPoint2->getFormCharacters()[i]->myShopColiision(*facility_2, facility_2->customerCount);
-		formCharacterPoint2->getFormCharacters()[i]->otherShopCollision(*facility_1, facility_1->customerCount);
-	}*/
+
 }
 
 

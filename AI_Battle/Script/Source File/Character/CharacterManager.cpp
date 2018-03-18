@@ -15,7 +15,6 @@ CharacterManager::CharacterManager(FormCharacter *formCharacter1, FormCharacter 
 void CharacterManager::update(float frameTime)
 {
 	attackManager();
-	deadManager();
 }
 
 //UŒ‚ŠÇ—
@@ -27,6 +26,10 @@ void CharacterManager::attackManager()
 		{
 			c1->startAttack(c2);
 			c2->startAttack(c1);
+			if (dynamic_cast<LongAttackTestCharacter*>(c1))
+			dynamic_cast<LongAttackTestCharacter*>(c1)->collisionWeapon(c2);
+			if (dynamic_cast<LongAttackTestCharacter*>(c2))
+			dynamic_cast<LongAttackTestCharacter*>(c2)->collisionWeapon(c1);
 		}
 	}
 
@@ -36,6 +39,10 @@ void CharacterManager::attackManager()
 		{
 			c1->startAttack(c2);
 			c2->startAttack(c1);
+			if (dynamic_cast<LongAttackTestCharacter*>(c1))
+				dynamic_cast<LongAttackTestCharacter*>(c1)->collisionWeapon(c2);
+			if (dynamic_cast<LongAttackTestCharacter*>(c2))
+				dynamic_cast<LongAttackTestCharacter*>(c2)->collisionWeapon(c1);
 		}
 	}
 
@@ -45,10 +52,14 @@ void CharacterManager::attackManager()
 		{
 			c1->startAttack(c2);
 			c2->startAttack(c1);
+			if (dynamic_cast<LongAttackTestCharacter*>(c1))
+				dynamic_cast<LongAttackTestCharacter*>(c1)->collisionWeapon(c2);
+			if (dynamic_cast<LongAttackTestCharacter*>(c2))
+				dynamic_cast<LongAttackTestCharacter*>(c2)->collisionWeapon(c1);
 		}
 	}
 	
 }
 
 
-}
+

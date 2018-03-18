@@ -53,6 +53,15 @@
     <Filter Include="Source FIle\Shop">
       <UniqueIdentifier>{9c7171df-0cb2-430e-8b36-969ce4bb44e5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="HeaderFile\Character\Weapon">
+      <UniqueIdentifier>{e7139f86-f182-4569-b7dd-6eeeabce2572}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source FIle\Character\Weapon">
+      <UniqueIdentifier>{60002a80-5d40-4f60-9dab-20103b726957}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HeaderFile\Character\Status">
+      <UniqueIdentifier>{8eff6f5d-6b23-4d1a-a8f4-460ce5af7f5b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Script\Header File\Character\character.h">
@@ -163,6 +172,30 @@
     <ClInclude Include="Script\Header File\Character\characterManager.h">
       <Filter>HeaderFile\Character</Filter>
     </ClInclude>
+    <ClInclude Include="Script\Header File\Character\Weapon\weapon.h">
+      <Filter>HeaderFile\Character\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="Script\Header File\Character\longDistanceAttackCharacter.h">
+      <Filter>HeaderFile\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="Script\Header File\Character\proximityAttackCharacter.h">
+      <Filter>HeaderFile\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="Script\Header File\Character\Status\status.h">
+      <Filter>HeaderFile\Character\Status</Filter>
+    </ClInclude>
+    <ClInclude Include="Script\Header File\Character\Status\status_TestCharacter.h">
+      <Filter>HeaderFile\Character\Status</Filter>
+    </ClInclude>
+    <ClInclude Include="Script\Header File\Character\longAttackTestCharacter.h">
+      <Filter>HeaderFile\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="Script\Header File\Character\Status\status_longAttackTestCharacter.h">
+      <Filter>HeaderFile\Character\Status</Filter>
+    </ClInclude>
+    <ClInclude Include="Script\Header File\Character\Weapon\testWeapon.h">
+      <Filter>HeaderFile\Character\Weapon</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Script\Source File\Character\character.cpp">
@@ -257,6 +290,21 @@
     </ClCompile>
     <ClCompile Include="Script\Source File\Character\CharacterManager.cpp">
       <Filter>Source FIle\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="Script\Source File\Character\Weapon\Weapon.cpp">
+      <Filter>Source FIle\Character\Weapon</Filter>
+    </ClCompile>
+    <ClCompile Include="Script\Source File\Character\LongDistanceAttackCharacter.cpp">
+      <Filter>Source FIle\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="Script\Source File\Character\ProximityAttackCharacter.cpp">
+      <Filter>Source FIle\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="Script\Source File\Character\LongAttackTestCharacter.cpp">
+      <Filter>Source FIle\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="Script\Source File\Character\Weapon\TestWeapon.cpp">
+      <Filter>Source FIle\Character\Weapon</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

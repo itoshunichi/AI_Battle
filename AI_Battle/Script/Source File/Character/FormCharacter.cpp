@@ -10,9 +10,8 @@ FormCharacter::FormCharacter(GameManager *gameManager, Entity &myShop, int playe
 	this->gameManager = gameManager;
 	input = gameManager->getInput();
 	this->playerNum = playerNum;
-	image = gameManager->getImageManager()->getFormCharacterPoint_Image();
+	pointImage = gameManager->getImageManager()->getFormCharacterPoint_Image();
 	this->myShop = myShop;
-	//this->otherFormCharacter = otherFormCharacter;
 }
 
 FormCharacter::~FormCharacter()
@@ -25,11 +24,11 @@ void FormCharacter::initalize()
 {
 	if (playerNum == 1)
 	{
-		position = vector2(300, 410);
+		pointPosition = vector2(300, 410);
 	}
 	else if (playerNum == 2)
 	{
-		position = vector2(800, 410);
+		pointPosition = vector2(800, 410);
 	}
 
 }
@@ -41,27 +40,19 @@ void FormCharacter::draw()
 	{
 		c->draw();
 	}
-	/*for (int i = 0; i < formCharacters.size(); i++)
-	{
-		formCharacters[i]->draw();
-	}*/
-	image.draw();
+	pointImage.draw();
 }
 
 //更新
 void FormCharacter::update(float frameTime,FormCharacter &otherFormCharacter)
 {
-	image.setX(position.x);
-	image.setY(position.y);
+	pointImage.setX(pointPosition.x);
+	pointImage.setY(pointPosition.y);
 	for each (Character* c in  formCharacters)
 	{
 		c->update(frameTime);
 	}
-	/*for (int i = 0; i < formCharacters.size(); i++)
-	{
-		formCharacters[i]->update(frameTime);
-	}*/
-	move();
+	pointMove();
 	formCharacter();
 	input->update(frameTime, 0);
 	setCurrentRow();
@@ -69,20 +60,20 @@ void FormCharacter::update(float frameTime,FormCharacter &otherFormCharacter)
 }
 
 //移動処理
-void FormCharacter::move()
+void FormCharacter::pointMove()
 {
 	if (playerNum == 1)
 	{
-		position.x = Math::clamp(position.x, myShop.getCurrentImage().getWidth(), (GAME_WIDTH / 2) - image.getWidth());
-		position.y = Math::clamp(position.y, 400, 650 - image.getHeight());
-		position += (vector2(input->getGamepadThumbLX(0, false), -input->getGamepadThumbLY(0, false))*0.5f);
+		pointPosition.x = Math::clamp(pointPosition.x, myShop.getCurrentImage().getWidth(), (GAME_WIDTH / 2) - pointImage.getWidth());
+		pointPosition.y = Math::clamp(pointPosition.y, 225, 550 - pointImage.getHeight());
+		pointPosition += (vector2(input->getGamepadThumbLX(0, false), -input->getGamepadThumbLY(0, false))*0.5f);
 
 	}
 	else if (playerNum == 2)
 	{
-		position.x = Math::clamp(position.x, (GAME_WIDTH / 2) + image.getWidth(), GAME_WIDTH - myShop.getCurrentImage().getWidth() - image.getWidth());
-		position.y = Math::clamp(position.y, 400, 650 - image.getHeight());
-		position += (vector2(input->getGamepadThumbRX(0, false), -input->getGamepadThumbRY(0, false))*0.5f);
+		pointPosition.x = Math::clamp(pointPosition.x, (GAME_WIDTH / 2) + pointImage.getWidth(), GAME_WIDTH - myShop.getCurrentImage().getWidth() - pointImage.getWidth());
+		pointPosition.y = Math::clamp(pointPosition.y, 225, 550 - pointImage.getHeight());
+		pointPosition += (vector2(input->getGamepadThumbRX(0, false), -input->getGamepadThumbRY(0, false))*0.5f);
 	}
 }
 
@@ -92,15 +83,14 @@ void FormCharacter::formSelectCharacter(CharacterType type)
 	Character* character = nullptr;
 	if (type == CharacterType::TESTCHARACTER)
 	{
-		character = new TestCharacter(gameManager, formPosition(), playerNum, currentRow);
-		//formCharacters.push_back(new TestCharacter(gameManager, formPosition(), playerNum, currentRow));
+		character = new TestCharacter(gameManager, formPosition(), playerNum);
+	}
+	else if (type == CharacterType::LONGATTACKTESTCHARACTER)
+	{
+		character = new LongAttackTestCharacter(gameManager, formPosition(), playerNum);
 	}
 	character->initialize();
 	formCharacters.push_back(character);
-	//リストに追加
-	//formCharacters.push_back(character);
-	//キャラを初期化
-	//formCharacters[formCharacters.size()-1]->initialize();
 	//列ごとのリストに追加
 	addColumnCharacters(character);
 }
@@ -170,15 +160,15 @@ void FormCharacter::formCharacter()
 void FormCharacter::setCurrentRow()
 {
 	//仮
-	if (position.y > 400 && position.y < 475)
+	if (pointPosition.y > 225 && pointPosition.y < 325)
 	{
 		currentRow = 3;
 	}
-	else if (position.y>475 && position.y < 550)
+	else if (pointPosition.y>325 && pointPosition.y < 425)
 	{
 		currentRow = 2;
 	}
-	else if (position.y>550 && position.y < 650)
+	else if (pointPosition.y>425 && pointPosition.y < 550)
 	{
 		currentRow = 1;
 	}
@@ -188,15 +178,15 @@ Vector2 FormCharacter::formPosition()
 {
 	if (currentRow == 3)
 	{
-		return vector2(position.x, 475);
+		return vector2(pointPosition.x,325);
 	}
 	else if (currentRow == 2)
 	{
-		return vector2(position.x, 550);
+		return vector2(pointPosition.x, 425);
 	}
 	else if (currentRow == 1)
 	{
-		return vector2(position.x, 650);
+		return vector2(pointPosition.x, 550);
 	}
 }
 

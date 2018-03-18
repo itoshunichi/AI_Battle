@@ -17,6 +17,8 @@ namespace TextureName
 	const char TESTPLAYER_TEXTURE[] = "pictures\\character.png";
 	const char FORMCHARACTERPOINT_TEXTURE[] = "pictures\\point.png";
 	const char BACKGROUND_TEXTURE[] = "pictures\\backGround.png";
+	const char LONGATTACKTESTCHARACTER_TEXTURE[] = "pictures\\character2.png";
+	const char TESTWEAPON_TEXTURE[] = "pictures\\TestWeapon.png";
 }
 
 class ImageManager
@@ -27,6 +29,8 @@ private:
 	TextureManager* testCharacter_TextureManager;
 	TextureManager* formCharacterPoint_TextureManager;
 	TextureManager* backGround_TextureManager;
+	TextureManager* longAttackTestCharacter_TextureManager;
+	TextureManager* testWeapon_TextureManager;
 	//TextureManager
 	TextureManager* player_wait;
 	TextureManager* fade;
@@ -42,6 +46,8 @@ private:
 	Image player_wait_image;
 	Image formCharacterPoint_image;
 	Image backGround_Imgae;
+	Image longAttackTestCharacter_Image;
+	Image testWeapon_Image;
 
 	Image hp_Image;
 	Image wall_Image;
@@ -73,6 +79,8 @@ public:
 	Image getWT_Enemy_Wait_Image(){ return WT_Enemey_wait_Image; }
 	Image getFormCharacterPoint_Image(){ return formCharacterPoint_image; }
 	Image getBackGround_Image(){ return backGround_Imgae; }
+	Image getLongAttackTestCharacter_Image(){ return longAttackTestCharacter_Image; }
+	Image getTestWeapon_Image(){ return testWeapon_Image; }
 };
 
 #endif

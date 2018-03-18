@@ -2,7 +2,7 @@
 #define CHARACTERMANAGER
 
 #include"formCharacter.h"
-
+#include"longDistanceAttackCharacter.h"
 
 //キャラクターをまとめるクラス
 class CharacterManager

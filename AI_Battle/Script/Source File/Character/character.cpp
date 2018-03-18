@@ -9,7 +9,7 @@ Character::Character()
 
 Character::~Character()
 {
-
+	delete status;
 }
 
 void Character::setAngle()
@@ -32,19 +32,19 @@ void Character::move(float frameTime)
 	//‰EŒü‚«‚¾‚Á‚½‚ç‰E‚ÉˆÚ“®
 	if (direction == Direction::RIGHT)
 	{
-		position.x += states.moveSpeed*frameTime;
+		position.x += status->moveSpeed*frameTime;
 	}
 	//¶Œü‚«‚¾‚Á‚½‚ç¶‚ÉˆÚ“®
 	if (direction == Direction::LEFT)
 	{
-		position.x -= states.moveSpeed*frameTime;
+		position.x -= status->moveSpeed*frameTime;
 	}
 }
 
 //“oê‚Ìˆ—
 void Character::appearance()
 {
-	attackTimer = Timer(states.attackTime);
+	//attackTimer = Timer(status->attackTime);
 	//1P‚¾‚Á‚½‚ç
 	if (playerNum == 1)
 	{
@@ -94,7 +94,7 @@ void Character::startAttack(Character* character)
 	attackTargetCharacter = nullptr;
 	attackTargetCharacter = character;
 	//ˆÚ“®’†‚©‚ÂUŒ‚”ÍˆÍ‚É“G‚ª‚¢‚é‚©‚Ç‚¤‚©
-	if (mode == Mode::MOVE&&Distance(position, character->getPosition()) < states.attackRange)
+	if (mode == Mode::MOVE&&Distance(position, character->getPosition()) < status->attackRange)
 	{
 		mode = Mode::ATTACK;
 	}
@@ -114,35 +114,10 @@ void Character::changeDirection()
 	}
 }
 
-//UŒ‚ˆ—
-void Character::attack(float frameTime)
-{
-	if (mode == Mode::ATTACK)
-	{
-		attackTimer.update(frameTime);
-		if (attackTimer.isEnd())
-		{
-			//‹ßÚ‚È‚ç
-			if (attackType = AttackType::PROXIMITY)
-			{
-				//ƒ_ƒ[ƒW‚ğ’¼Ú—^‚¦‚é
-				attackTargetCharacter->damage(states.attackPower);
-			}
-			//‰“‹——£‚È‚ç
-			if (attackType = AttackType::LONG_DISTANCE)
-			{
-				//UŒ‚‚ğ¶¬
-			}
-
-			attackTimer.resetTimer();
-		}
-	}
-}
-
 //ˆø”‚Åw’è‚µ‚½ƒ_ƒ[ƒW—Ê‚ğHp‚©‚çŒ¸‚ç‚·
 void Character::damage(float damage)
 {
-	states.hp -= damage;
+	hp -= damage;
 }
 
 void Character::dead()
@@ -152,3 +127,8 @@ void Character::dead()
 		delete this;
 	}
 }
+
+//void Character::collisionWeapon(Weapon& weapon)
+//{
+//
+//}

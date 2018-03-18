@@ -4,27 +4,26 @@ TestCharacter::TestCharacter()
 {
 
 }
-TestCharacter::TestCharacter(GameManager *gameManager, Vector2 position, int playerNum, int currentRow)
+TestCharacter::TestCharacter(GameManager *gameManager, Vector2 position, int playerNum)
 {
 	this->gameManager = gameManager;
 	this->playerNum = playerNum;
-	this->currentRow = currentRow;
 	currentImage = gameManager->getImageManager()->getTestCharacter_Image();
 	this->position = position - vector2(0, currentImage.getHeight());
-	states.attackRange = currentImage.getWidth();
-	states.attackPower = 10;
-	states.hp = 30;
-	states.attackTime = 1;
+	status = new Status_TestCharacter();
+	hp = status->maxHp;
+	status->attackRange += currentImage.getWidth();
+	attackTimer = Timer(status->attackTime);
 }
 
 TestCharacter::~TestCharacter()
 {
-
+	
 }
 
 void TestCharacter::initialize()
 {
-	states.moveSpeed = 200;
+	//states.moveSpeed = 200;
 	
 	appearance();
 	mode = Mode::MOVE;
