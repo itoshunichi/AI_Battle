@@ -7,20 +7,25 @@
 #include"../Character/character.h"
 #include"testCharacter.h"
 #include"longAttackTestCharacter.h"
+#include"testAirCharacter.h"
 #include"characterType.h"
+#include"../Otherwise/timer.h"
+#include"characterCost.h"
+#include"playerNum.h"
+#include"characterCostManager.h"
 
 //キャラクターを生成するクラス
 class FormCharacter
 {
 private:
 	GameManager *gameManager;
+	CharacterCostManager characterCost;
 	Input *input;
 	//生成ポイントの画像
 	Image pointImage;
 	//生成ポイントの座標
 	Vector2 pointPosition;
-	int playerNum;
-	Entity myShop;
+	PlayerNum playerNum;
 	//生成するキャラクターのリスト
 	vector<CharacterType>formCharacterTypes;
 	//自分がいまどこの列にいるか
@@ -34,18 +39,23 @@ private:
 	//3列目のキャラ
 	list<Character*>thirdColumnCharacters;
 
+	
 private:
 	void formSelectCharacter(CharacterType type);
 	void formCharacter();
 	//現在いるの列を設定
 	void setCurrentRow();
-	//生成する位置
-	Vector2 formPosition();
 	//キャラクターの削除
 	void removeCharacter();
+	//1Pかどうか
+	bool isPlayer1(){ return playerNum == PlayerNum::PLAYER1; }
+	//2Pかどうか
+	bool isPlayer2(){ return playerNum ==PlayerNum::PLAYER2; }
+	//引数で指定した列かどうか
+	bool isCurrentRow(int curretRow){ return this->currentRow == currentRow; }
 public:
 	FormCharacter();
-	FormCharacter(GameManager *gameManager,Entity &myShop,int playerNum);
+	FormCharacter(GameManager *gameManager,PlayerNum playerNum);
 	~FormCharacter();
 	//初期化
 	void initalize();

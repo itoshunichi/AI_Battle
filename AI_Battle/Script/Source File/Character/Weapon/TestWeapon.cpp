@@ -5,10 +5,10 @@ TestWeapon::TestWeapon()
 
 }
 
-TestWeapon::TestWeapon(GameManager *gameManager, Direction direction, Vector2 position)
+TestWeapon::TestWeapon(GameManager *gameManager, Vector2 targetCharacterPosition, Vector2 position)
 {
 	this->gameManager = gameManager;
-	this->direction = direction;
+	this->targetCharacterPosition = targetCharacterPosition;
 	this->position = position;
 	currentImage = this->gameManager->getImageManager()->getTestWeapon_Image();
 	speed = 200;

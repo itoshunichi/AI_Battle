@@ -5,14 +5,13 @@ LongAttackTestCharacter::LongAttackTestCharacter()
 
 }
 
-LongAttackTestCharacter::LongAttackTestCharacter(GameManager *gameManager, Vector2 position, int playerNum)
+LongAttackTestCharacter::LongAttackTestCharacter(GameManager *gameManager, PlayerNum playerNum)
 {
 	this->gameManager = gameManager;
 	this->playerNum = playerNum;
 	currentImage = gameManager->getImageManager()->getLongAttackTestCharacter_Image();
-	this->position = position - vector2(0, currentImage.getHeight());
 	status = new Status_LongAttackTestCharacter();
-	hp = status->maxHp;
+	currentHp = status->maxHp;
 	status->attackRange += currentImage.getWidth();
 	attackTimer = Timer(status->attackTime);
 }
@@ -53,7 +52,7 @@ void LongAttackTestCharacter::draw()
 
 void LongAttackTestCharacter::firingWeapon()
 {
-	weapon = new TestWeapon(gameManager, direction, weaponFormPosition());
+	weapon = new TestWeapon(gameManager,attackTargetCharacter->getPosition(), weaponFormPosition());
 	weapon->initialize();
 	weapons.push_back(weapon);
 	

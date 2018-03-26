@@ -7,7 +7,7 @@ class TestWeapon:public Weapon
 {
 public:
 	TestWeapon();
-	TestWeapon(GameManager *gameManager, Direction direction, Vector2 position);
+	TestWeapon(GameManager *gameManager,Vector2 targetCharacterPosition, Vector2 position);
 	~TestWeapon();
 	void initialize();
 	void update(float frameTime);

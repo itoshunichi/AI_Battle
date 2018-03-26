@@ -175,12 +175,6 @@
     <ClInclude Include="Script\Header File\Character\Weapon\weapon.h">
       <Filter>HeaderFile\Character\Weapon</Filter>
     </ClInclude>
-    <ClInclude Include="Script\Header File\Character\longDistanceAttackCharacter.h">
-      <Filter>HeaderFile\Character</Filter>
-    </ClInclude>
-    <ClInclude Include="Script\Header File\Character\proximityAttackCharacter.h">
-      <Filter>HeaderFile\Character</Filter>
-    </ClInclude>
     <ClInclude Include="Script\Header File\Character\Status\status.h">
       <Filter>HeaderFile\Character\Status</Filter>
     </ClInclude>
@@ -195,6 +189,36 @@
     </ClInclude>
     <ClInclude Include="Script\Header File\Character\Weapon\testWeapon.h">
       <Filter>HeaderFile\Character\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="Script\Header File\Character\characterCost.h">
+      <Filter>HeaderFile\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="Script\Header File\Character\characterCostManager.h">
+      <Filter>HeaderFile\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="Script\Header File\Character\playerNum.h">
+      <Filter>HeaderFile\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="Script\Header File\Character\landCharacter.h">
+      <Filter>HeaderFile\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="Script\Header File\Character\airCharacter.h">
+      <Filter>HeaderFile\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="Script\Header File\Character\LongDistanceAttackCharacter_Land.h">
+      <Filter>HeaderFile\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="Script\Header File\Character\proximityAttackCharacter_Land.h">
+      <Filter>HeaderFile\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="Script\Header File\Character\LongDistanceAttackCharacter_Air.h">
+      <Filter>HeaderFile\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="Script\Header File\Character\proximityAttackCharacter_Air.h">
+      <Filter>HeaderFile\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="Script\Header File\Character\testAirCharacter.h">
+      <Filter>HeaderFile\Character</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -294,17 +318,35 @@
     <ClCompile Include="Script\Source File\Character\Weapon\Weapon.cpp">
       <Filter>Source FIle\Character\Weapon</Filter>
     </ClCompile>
-    <ClCompile Include="Script\Source File\Character\LongDistanceAttackCharacter.cpp">
-      <Filter>Source FIle\Character</Filter>
-    </ClCompile>
-    <ClCompile Include="Script\Source File\Character\ProximityAttackCharacter.cpp">
-      <Filter>Source FIle\Character</Filter>
-    </ClCompile>
     <ClCompile Include="Script\Source File\Character\LongAttackTestCharacter.cpp">
       <Filter>Source FIle\Character</Filter>
     </ClCompile>
     <ClCompile Include="Script\Source File\Character\Weapon\TestWeapon.cpp">
       <Filter>Source FIle\Character\Weapon</Filter>
+    </ClCompile>
+    <ClCompile Include="Script\Source File\Character\CharacterCostManager.cpp">
+      <Filter>Source FIle\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="Script\Source File\Character\AirCharacter.cpp">
+      <Filter>Source FIle\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="Script\Source File\Character\LandCharacter.cpp">
+      <Filter>Source FIle\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="Script\Source File\Character\LongDistanceAttackCharacter_Land.cpp">
+      <Filter>Source FIle\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="Script\Source File\Character\ProximityAttackCharacter_Land.cpp">
+      <Filter>Source FIle\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="Script\Source File\Character\ProximityAttackCharacter_Air.cpp">
+      <Filter>Source FIle\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="Script\Source File\Character\LongDistanceAttackCharacter_Air.cpp">
+      <Filter>Source FIle\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="Script\Source File\Character\TestAirCharacter.cpp">
+      <Filter>Source FIle\Character</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

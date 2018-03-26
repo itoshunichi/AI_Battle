@@ -13,8 +13,8 @@ class GamePlay:public Scene
 private:
 	Image backImage;
 	Console *console;
-	Shop *facility_1;
-	Shop *facility_2;
+	Shop *shop_1;
+	Shop *shop_2;
 	FormCharacter *formCharacterPoint1;
 	FormCharacter *formCharacterPoint2;
 	CharacterManager characterManager;

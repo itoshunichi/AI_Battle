@@ -23,25 +23,23 @@ void GamePlay::initialize()
 	//フェード
 	fade = Fade(gameManager->getImageManager());
 	fade.initialize();
-	facility_1 = new Shop(gameManager);
-	facility_1->initialize();
-	facility_1->setPosition(vector2(0, 0));
-	facility_2 = new Shop(gameManager);
-	facility_2->initialize();
-	facility_2->setPosition(vector2(GAME_WIDTH - 128, 0));
-	formCharacterPoint1 = new FormCharacter(gameManager,*facility_1,1);
-	formCharacterPoint2 = new FormCharacter(gameManager, *facility_2, 2);
+	shop_1 = new Shop(gameManager,PlayerNum::PLAYER1);
+	shop_1->initialize();
+	shop_2 = new Shop(gameManager,PlayerNum::PLAYER2);
+	shop_2->initialize();
+	formCharacterPoint1 = new FormCharacter(gameManager,PlayerNum::PLAYER1);
+	formCharacterPoint2 = new FormCharacter(gameManager, PlayerNum::PLAYER2);
 	formCharacterPoint1->initalize();
 	formCharacterPoint2->initalize();
 	formCharacterPoint1->addFormCharacterType(CharacterType::TESTCHARACTER);
 	formCharacterPoint1->addFormCharacterType(CharacterType::LONGATTACKTESTCHARACTER);
-	formCharacterPoint1->addFormCharacterType(CharacterType::TESTCHARACTER);
+	formCharacterPoint1->addFormCharacterType(CharacterType::TESTAIRCHARACTER);
 	formCharacterPoint1->addFormCharacterType(CharacterType::TESTCHARACTER);
 	
 	
 	formCharacterPoint2->addFormCharacterType(CharacterType::TESTCHARACTER);
 	formCharacterPoint2->addFormCharacterType(CharacterType::LONGATTACKTESTCHARACTER);
-	formCharacterPoint2->addFormCharacterType(CharacterType::TESTCHARACTER);
+	formCharacterPoint2->addFormCharacterType(CharacterType::TESTAIRCHARACTER);
 	formCharacterPoint2->addFormCharacterType(CharacterType::TESTCHARACTER);
 	isEnd = false;
 	backImage = gameManager->getImageManager()->getBackGround_Image();
@@ -60,8 +58,8 @@ void GamePlay::update(float frameTime)
 {
 	//フェードの更新
 	fade.update();
-	facility_1->update(frameTime);
-	facility_2->update(frameTime);
+	shop_1->update(frameTime);
+	shop_2->update(frameTime);
 	formCharacterPoint1->update(frameTime,*formCharacterPoint2);
 	formCharacterPoint2->update(frameTime,*formCharacterPoint1);
 	characterManager.update(frameTime);
@@ -71,8 +69,8 @@ void GamePlay::update(float frameTime)
 void GamePlay::draw()
 {
 	backImage.draw();
-	//facility_1->draw();
-	//facility_2->draw();
+	shop_1->draw();
+	shop_2->draw();
 	formCharacterPoint1->draw();
 	formCharacterPoint2->draw();
 	fade.draw();
@@ -83,13 +81,13 @@ void GamePlay::collision()
 {
 	for each (Character* c in formCharacterPoint1->getFormCharacters())
 	{
-		c->myShopColiision(*facility_1, facility_1->customerCount);
-		c->otherShopCollision(*facility_2, facility_2->customerCount);
+		c->myShopColiision(*shop_1, shop_1->customerCount);
+		c->otherShopCollision(*shop_2, shop_2->customerCount);
 	}
 	for each (Character* c in formCharacterPoint2->getFormCharacters())
 	{
-		c->myShopColiision(*facility_2, facility_2->customerCount);
-		c->otherShopCollision(*facility_1, facility_1->customerCount);
+		c->myShopColiision(*shop_2, shop_2->customerCount);
+		c->otherShopCollision(*shop_1, shop_1->customerCount);
 	}
 
 }

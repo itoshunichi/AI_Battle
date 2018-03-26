@@ -5,6 +5,7 @@ enum CharacterType
 {
 	TESTCHARACTER,
 	LONGATTACKTESTCHARACTER,
+	TESTAIRCHARACTER,
 };
 
 #endif

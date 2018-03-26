@@ -6,6 +6,7 @@
 #include"square.h"
 #include"../Otherwise/timer.h"
 #include"Status\status.h"
+#include"playerNum.h"
 
 class Character :public Entity
 {
@@ -24,6 +25,7 @@ public:
 		MOVE,//ˆÚ“®
 		ATTACK,//UŒ‚
 		ARRIVAL,//“ž’…
+		TRANSPORT,//‰^‚Ô
 		DEAD,//Ž€–S
 	};
 
@@ -49,18 +51,15 @@ protected:
 	//Œ»Ý‚Ìó‘Ô
 	Mode mode;
 	//ƒvƒŒƒCƒ„[”Ô†
-	int playerNum;
-	//Ž©•ª‚Ì“X
-	Entity myShop;
-	//‘ŠŽè‚Ì“X
-	Entity otherShop;
+	PlayerNum playerNum;
 	//Œ»Ý‚Ì—ñ
 	int currentRow;
-	int hp;
+	//Œ»Ý‚ÌHP
+	int currentHp;
+	//UŒ‚‚Ì‘ÎÛ
 	Character* attackTargetCharacter;
 protected:
-
-	void setPosition();
+	
 	//Šp“x‚ÌÝ’è
 	void setAngle();
 	//“oê
@@ -70,6 +69,14 @@ protected:
 	//UŒ‚ˆ—
 	//void attack(float frameTime);
 	void dead();
+	//‰EŒü‚«‚©‚Ç‚¤‚©
+	bool isDirectionRight(){ return direction == Direction::RIGHT; }
+	//¶Œü‚«‚©‚Ç‚¤‚©
+	bool isDirectionLeft(){ return direction == Direction::LEFT; }
+	//1P‚©‚Ç‚¤‚©
+	bool isPlayer1(){ return playerNum == PlayerNum::PLAYER1; }
+	//2P‚©
+	bool isPlayer2(){ return playerNum == PlayerNum::PLAYER2; }
 	//Œü‚«•ÏX
 	void changeDirection();
 public:
@@ -81,21 +88,28 @@ public:
 	virtual void update(float frameTime) = 0;
 	//•`‰æ
 	virtual void draw() = 0;
+	virtual void setPosition(float pointPositionX, int pointRow) = 0;
 	//‘ŠŽè“X‚Æ‚ÌÕ“Ë”»’è
 	virtual void otherShopCollision(Entity &entity,int &customerCount);
 	//Ž©•ª“X‚Æ‚ÌÕ“Ë”»’è
 	virtual void myShopColiision(Entity &entity, int &customerCout);
 	//UŒ‚ŠJŽn
-	void startAttack(Character* characters);
-	void setPosition(Vector2 position){ this->position = position; }
+	virtual void startAttack(Character* characters) = 0;
+	//UŒ‚ˆ—
+	virtual void attack(float frameTime) = 0;
 	SQUARE getCurrentSquare(){ return currentSquare; }
 	void damage(float damage);
-	//void collisionWeapon(Weapon& weapon);
 	//ó‘Ô‚Ì•ÏX
 	void changeMode(Mode mode){ this->mode = mode;}
-	int getHp(){ return hp; }
+	//‘Ì—ÍŽæ“¾
+	int getHp(){ return currentHp; }
+	//Œ»Ý‚Ì—ñ‚ðŽæ“¾
 	int getCurrentRow(){ return currentRow; }
+	//ó‘Ô‚ÌŽæ“¾
 	Mode getMode(){ return mode; }
+	//ƒRƒXƒg‚ÌŽæ“¾
+	int getCost(){ return status->cost; }
+	Type getType(){ return type; }
 };
 
 #endif

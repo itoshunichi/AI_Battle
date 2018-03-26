@@ -19,6 +19,7 @@ namespace TextureName
 	const char BACKGROUND_TEXTURE[] = "pictures\\backGround.png";
 	const char LONGATTACKTESTCHARACTER_TEXTURE[] = "pictures\\character2.png";
 	const char TESTWEAPON_TEXTURE[] = "pictures\\TestWeapon.png";
+	const char COST_TEXTURE[] = "pictures\\life.png";
 }
 
 class ImageManager

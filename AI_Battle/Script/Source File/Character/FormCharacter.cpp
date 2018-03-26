@@ -5,13 +5,14 @@ FormCharacter::FormCharacter()
 
 }
 
-FormCharacter::FormCharacter(GameManager *gameManager, Entity &myShop, int playerNum)
+FormCharacter::FormCharacter(GameManager *gameManager, PlayerNum playerNum)
 {
+	
 	this->gameManager = gameManager;
 	input = gameManager->getInput();
 	this->playerNum = playerNum;
 	pointImage = gameManager->getImageManager()->getFormCharacterPoint_Image();
-	this->myShop = myShop;
+	characterCost = CharacterCostManager(gameManager, playerNum);
 }
 
 FormCharacter::~FormCharacter()
@@ -22,15 +23,16 @@ FormCharacter::~FormCharacter()
 //初期化
 void FormCharacter::initalize()
 {
-	if (playerNum == 1)
+	if (isPlayer1())
 	{
 		pointPosition = vector2(300, 410);
 	}
-	else if (playerNum == 2)
+	else if (isPlayer2())
 	{
 		pointPosition = vector2(800, 410);
 	}
-
+	
+	characterCost.initialize();
 }
 
 //描画
@@ -41,10 +43,11 @@ void FormCharacter::draw()
 		c->draw();
 	}
 	pointImage.draw();
+	characterCost.draw();
 }
 
 //更新
-void FormCharacter::update(float frameTime,FormCharacter &otherFormCharacter)
+void FormCharacter::update(float frameTime, FormCharacter &otherFormCharacter)
 {
 	pointImage.setX(pointPosition.x);
 	pointImage.setY(pointPosition.y);
@@ -57,22 +60,24 @@ void FormCharacter::update(float frameTime,FormCharacter &otherFormCharacter)
 	input->update(frameTime, 0);
 	setCurrentRow();
 	removeCharacter();
+	characterCost.update(frameTime);
 }
 
 //移動処理
 void FormCharacter::pointMove()
 {
-	if (playerNum == 1)
+	if (isPlayer1())
 	{
-		pointPosition.x = Math::clamp(pointPosition.x, myShop.getCurrentImage().getWidth(), (GAME_WIDTH / 2) - pointImage.getWidth());
-		pointPosition.y = Math::clamp(pointPosition.y, 225, 550 - pointImage.getHeight());
+		pointPosition.x = Math::clamp(pointPosition.x, gameManager->getImageManager()->getFacility_Image().getWidth(), (GAME_WIDTH / 2) - pointImage.getWidth());
+		pointPosition.y = Math::clamp(pointPosition.y, thirdColumnMinY, firstColumnMaxY - pointImage.getHeight());
 		pointPosition += (vector2(input->getGamepadThumbLX(0, false), -input->getGamepadThumbLY(0, false))*0.5f);
 
 	}
-	else if (playerNum == 2)
+	else if (isPlayer2())
 	{
-		pointPosition.x = Math::clamp(pointPosition.x, (GAME_WIDTH / 2) + pointImage.getWidth(), GAME_WIDTH - myShop.getCurrentImage().getWidth() - pointImage.getWidth());
-		pointPosition.y = Math::clamp(pointPosition.y, 225, 550 - pointImage.getHeight());
+		pointPosition.x = Math::clamp(pointPosition.x, (GAME_WIDTH / 2) + pointImage.getWidth(), GAME_WIDTH - 
+			gameManager->getImageManager()->getFacility_Image().getWidth() - pointImage.getWidth());
+		pointPosition.y = Math::clamp(pointPosition.y, thirdColumnMinY, firstColumnMaxY - pointImage.getHeight());
 		pointPosition += (vector2(input->getGamepadThumbRX(0, false), -input->getGamepadThumbRY(0, false))*0.5f);
 	}
 }
@@ -83,13 +88,25 @@ void FormCharacter::formSelectCharacter(CharacterType type)
 	Character* character = nullptr;
 	if (type == CharacterType::TESTCHARACTER)
 	{
-		character = new TestCharacter(gameManager, formPosition(), playerNum);
+		if (characterCost.getCurrentCost() < TestCharacter_COST)return;
+		character = new TestCharacter(gameManager, playerNum);
 	}
 	else if (type == CharacterType::LONGATTACKTESTCHARACTER)
 	{
-		character = new LongAttackTestCharacter(gameManager, formPosition(), playerNum);
+		if (characterCost.getCurrentCost() < TestCharacter_COST)return;
+		character = new LongAttackTestCharacter(gameManager, playerNum);
 	}
+	else if (type == CharacterType::TESTAIRCHARACTER)
+	{
+		if (characterCost.getCurrentCost() < TestCharacter_COST)return;
+		character = new TestAirCharacter(gameManager, playerNum);
+	}
+	character->setPosition(pointPosition.x, currentRow);
+	//キャラクターを初期化
 	character->initialize();
+	//現在のコストからキャラのコスト分を引く
+	characterCost.costDecrease(character->getCost());
+	//キャラリストに追加
 	formCharacters.push_back(character);
 	//列ごとのリストに追加
 	addColumnCharacters(character);
@@ -98,7 +115,7 @@ void FormCharacter::formSelectCharacter(CharacterType type)
 //列ごとのリストに追加
 void FormCharacter::addColumnCharacters(Character* character)
 {
-	if (currentRow == 1)
+	if (currentRow == 3)
 	{
 		firstColumnCharacters.push_back(character);
 	}
@@ -106,7 +123,7 @@ void FormCharacter::addColumnCharacters(Character* character)
 	{
 		secondColumnCharacters.push_back(character);
 	}
-	else if (currentRow == 3)
+	else if (currentRow == 1)
 	{
 		thirdColumnCharacters.push_back(character);
 	}
@@ -115,7 +132,8 @@ void FormCharacter::addColumnCharacters(Character* character)
 //キャラクター生成
 void FormCharacter::formCharacter()
 {
-	if (playerNum == 1)
+	//1Pの場合
+	if (isPlayer1())
 	{
 		if (input->getGamepadDPadUp(0, true))
 		{
@@ -135,7 +153,8 @@ void FormCharacter::formCharacter()
 			formSelectCharacter(formCharacterTypes[3]);
 		}
 	}
-	else if (playerNum == 2)
+	//2Pの場合
+	else if (isPlayer2())
 	{
 		if (input->getGamepadY(0, true))
 		{
@@ -160,38 +179,26 @@ void FormCharacter::formCharacter()
 void FormCharacter::setCurrentRow()
 {
 	//仮
-	if (pointPosition.y > 225 && pointPosition.y < 325)
+	if (pointPosition.y > thirdColumnMinY && pointPosition.y < thirdColumnMaxY)
 	{
 		currentRow = 3;
 	}
-	else if (pointPosition.y>325 && pointPosition.y < 425)
+	else if (pointPosition.y>seconsColumnMinY && pointPosition.y < secondColumnMaxY)
 	{
 		currentRow = 2;
 	}
-	else if (pointPosition.y>425 && pointPosition.y < 550)
+	else if (pointPosition.y>firstColumnMinY && pointPosition.y < firstColumnMaxY)
 	{
 		currentRow = 1;
 	}
 }
 
-Vector2 FormCharacter::formPosition()
-{
-	if (currentRow == 3)
-	{
-		return vector2(pointPosition.x,325);
-	}
-	else if (currentRow == 2)
-	{
-		return vector2(pointPosition.x, 425);
-	}
-	else if (currentRow == 1)
-	{
-		return vector2(pointPosition.x, 550);
-	}
-}
 
+
+//キャラクターの削除
 void FormCharacter::removeCharacter()
 {
+	//リストからHPが0以下のキャラを削除
 	formCharacters.erase(remove_if(formCharacters.begin(), formCharacters.end(), ([](Character* c){return c->getHp() <= 0; })), formCharacters.end());
 	firstColumnCharacters.erase(remove_if(firstColumnCharacters.begin(), firstColumnCharacters.end(), ([](Character* c){return c->getHp() <= 0; })), firstColumnCharacters.end());
 	secondColumnCharacters.erase(remove_if(secondColumnCharacters.begin(), secondColumnCharacters.end(), ([](Character* c){return c->getHp() <= 0; })), secondColumnCharacters.end());

@@ -2,7 +2,8 @@
 #define CHARACTERMANAGER
 
 #include"formCharacter.h"
-#include"longDistanceAttackCharacter.h"
+#include"longDistanceAttackCharacter_Land.h"
+#include"longDistanceAttackCharacter_Air.h"
 
 //キャラクターをまとめるクラス
 class CharacterManager

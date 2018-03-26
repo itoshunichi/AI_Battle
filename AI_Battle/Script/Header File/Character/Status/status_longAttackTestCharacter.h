@@ -20,6 +20,8 @@ private:
 		attackTime = 1;
 		//移動スピード
 		moveSpeed = 50;
+		//コスト
+		cost = 5;
 	}
 };
 

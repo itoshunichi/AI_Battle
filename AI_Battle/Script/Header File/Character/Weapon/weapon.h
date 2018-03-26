@@ -4,6 +4,7 @@
 #include"../../Default/entity.h"
 #include"../direction.h"
 #include"../character.h"
+#include"../../Otherwise/math.h"
 
 class Weapon:public Entity
 {
@@ -14,9 +15,10 @@ protected:
 	//向き
 	Direction direction;
 	float damage;
+	Vector2 targetCharacterPosition;
+	float targetRadian;
 public:
 	Weapon();
-	//Weapon(GameManager *gameManager,Character *character,Vector2 position);
 	~Weapon();
 	bool collisionCharacter(Character* characterEntity);
 	//初期化
@@ -28,7 +30,8 @@ public:
 	void setDamage(float damage){ this->damage = damage; }
 protected:
 	void move(float frameTime);
-
+	//ターゲットまでの角度
+	void setTargetRadian();
 };
 
 #endif

@@ -35,6 +35,19 @@ const bool FULLSCREEN = false;              // windowed or fullscreen
 const UINT GAME_WIDTH = 1280;               // width of game in pixels
 const UINT GAME_HEIGHT = 720;               // height of game in pixels
 
+//1列目のYの最小値
+const float firstColumnMinY = 425;
+//1列目のYの最大値
+const float firstColumnMaxY = 550;
+//2列目のYの最小値
+const float seconsColumnMinY = 325;
+//2列目のYの最大値
+const float secondColumnMaxY = 425;
+//3列目のYの最小値
+const float thirdColumnMinY = 225;
+//3列目のYの最大値
+const float thirdColumnMaxY = 325;
+
 const int STAGE_MASS_SIZE = 32;
 const int STAGE_WIDTH = 40;
 const int STAGE_HEIGH = 24;

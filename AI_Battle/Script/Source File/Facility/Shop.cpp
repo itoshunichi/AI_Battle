@@ -5,9 +5,10 @@ Shop::Shop()
 
 }
 
-Shop::Shop(GameManager *gameManager)
+Shop::Shop(GameManager *gameManager,PlayerNum playerNum)
 {
 	this->gameManager = gameManager;
+	this->playerNum = playerNum;
 	collisionType = entityNS::COLLISION_TYPE::BOX;
 	collisionTag = entityNS::COLLISION_TAG::FACILITY;
 }
@@ -28,6 +29,16 @@ void Shop::initialize()
 	{
 		customerIcons.push_back(customerIcon);
 	}
+	//âº
+	if (isPlayer1())
+	{
+		setPosition(vector2(0, 0));
+	}
+	if (isPlayer2())
+	{
+		setPosition(vector2(GAME_WIDTH - 128, 0));
+	}
+
 }
 
 //çXêV
@@ -41,7 +52,7 @@ void Shop::update(float frameTime)
 //ï`âÊ
 void Shop::draw()
 {
-	currentImage.draw();
+	//currentImage.draw();
 	for (int i = 0; i < customerCount; i++)
 	{
 		customerIcons[i].draw();

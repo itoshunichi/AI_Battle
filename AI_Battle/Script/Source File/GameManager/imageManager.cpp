@@ -10,8 +10,9 @@ ImageManager::ImageManager()
 	backGround_TextureManager = new TextureManager(TextureName::BACKGROUND_TEXTURE);
 	longAttackTestCharacter_TextureManager = new TextureManager(TextureName::LONGATTACKTESTCHARACTER_TEXTURE);
 	testWeapon_TextureManager = new TextureManager(TextureName::TESTWEAPON_TEXTURE);
+	hp = new TextureManager(TextureName::COST_TEXTURE);
 	textures = {facility_TextureManager,fade,aitemIcon_TextureManager,testCharacter_TextureManager,formCharacterPoint_TextureManager,backGround_TextureManager,
-	longAttackTestCharacter_TextureManager,testWeapon_TextureManager};
+	longAttackTestCharacter_TextureManager,testWeapon_TextureManager,hp};
 }
 
 void ImageManager::initialize(Graphics *g)
@@ -29,12 +30,7 @@ void ImageManager::initialize(Graphics *g)
 	backGround_Imgae.initialize(g, 0, 0, 0, backGround_TextureManager);
 	longAttackTestCharacter_Image.initialize(g, 0, 0, 0, longAttackTestCharacter_TextureManager);
 	testWeapon_Image.initialize(g, 0, 0, 0, testWeapon_TextureManager);
-	/*player_wait_image.initialize(g, 128, 128, 4, player_wait);
 	hp_Image.initialize(g, 0, 0, 0, hp);
-	wall_Image.initialize(g, 0, 0, 0, wall);
-	testPoint_Image.initialize(g, 0, 0, 0, testPoint);
-	WT_Enemey_wait_Image.initialize(g, 128, 128, 4, WT_Enemey_wait);*/
-
 }
 
 void ImageManager::onLostDevice()

@@ -3,6 +3,7 @@
 
 #include"../GameManager/gameManager.h"
 #include"../Default/entity.h"
+#include"../Character/playerNum.h"
 
 //店
 class Shop:public Entity
@@ -12,15 +13,19 @@ private:
 	//Image image;
 	Image customerIcon;
 	vector<Image>customerIcons;
-	
+	PlayerNum playerNum;
 	//Vector2 position;
 
 private:
 	//アイテムのアイコンの位置の設定
 	void setAitemIconsPosition();
+	//1Pかどうか
+	bool isPlayer1(){ return playerNum == PlayerNum::PLAYER1; }
+	//2Pかどうか
+	bool isPlayer2(){ return playerNum == PlayerNum::PLAYER2; }
 public:
 	Shop();
-	Shop(GameManager *gameManager);
+	Shop(GameManager *gameManager,PlayerNum playerNum);
 	~Shop();
 	int maxCustonerCount;
 	//客数

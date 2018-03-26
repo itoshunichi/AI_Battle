@@ -9,6 +9,8 @@ struct Status
 	float attackTime;//攻撃速度
 	float moveSpeed;//移動速度
 	float attackRange;//攻撃範囲
+	int cost;//コスト
+
 	virtual void setStatus() = 0;
 };
 

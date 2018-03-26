@@ -11,18 +11,26 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Script\Header File\Character\airCharacter.h" />
     <ClInclude Include="Script\Header File\Character\character.h" />
+    <ClInclude Include="Script\Header File\Character\characterCost.h" />
+    <ClInclude Include="Script\Header File\Character\characterCostManager.h" />
     <ClInclude Include="Script\Header File\Character\characterManager.h" />
     <ClInclude Include="Script\Header File\Character\characterType.h" />
     <ClInclude Include="Script\Header File\Character\direction.h" />
     <ClInclude Include="Script\Header File\Character\formCharacter.h" />
+    <ClInclude Include="Script\Header File\Character\LongDistanceAttackCharacter_Air.h" />
+    <ClInclude Include="Script\Header File\Character\landCharacter.h" />
     <ClInclude Include="Script\Header File\Character\longAttackTestCharacter.h" />
-    <ClInclude Include="Script\Header File\Character\longDistanceAttackCharacter.h" />
-    <ClInclude Include="Script\Header File\Character\proximityAttackCharacter.h" />
+    <ClInclude Include="Script\Header File\Character\LongDistanceAttackCharacter_Land.h" />
+    <ClInclude Include="Script\Header File\Character\playerNum.h" />
+    <ClInclude Include="Script\Header File\Character\proximityAttackCharacter_Air.h" />
+    <ClInclude Include="Script\Header File\Character\proximityAttackCharacter_Land.h" />
     <ClInclude Include="Script\Header File\Character\square.h" />
     <ClInclude Include="Script\Header File\Character\Status\status.h" />
     <ClInclude Include="Script\Header File\Character\Status\status_longAttackTestCharacter.h" />
     <ClInclude Include="Script\Header File\Character\Status\status_TestCharacter.h" />
+    <ClInclude Include="Script\Header File\Character\testAirCharacter.h" />
     <ClInclude Include="Script\Header File\Character\testCharacter.h" />
     <ClInclude Include="Script\Header File\Character\Weapon\testWeapon.h" />
     <ClInclude Include="Script\Header File\Character\Weapon\weapon.h" />
@@ -58,13 +66,19 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Script\Header File\Character\TestCharacter.cpp" />
+    <ClCompile Include="Script\Source File\Character\AirCharacter.cpp" />
     <ClCompile Include="Script\Source File\Character\character.cpp" />
+    <ClCompile Include="Script\Source File\Character\CharacterCostManager.cpp" />
     <ClCompile Include="Script\Source File\Character\CharacterManager.cpp" />
     <ClCompile Include="Script\Source File\Character\FormCharacter.cpp" />
+    <ClCompile Include="Script\Source File\Character\LandCharacter.cpp" />
     <ClCompile Include="Script\Source File\Character\LongAttackTestCharacter.cpp" />
-    <ClCompile Include="Script\Source File\Character\LongDistanceAttackCharacter.cpp" />
-    <ClCompile Include="Script\Source File\Character\ProximityAttackCharacter.cpp" />
+    <ClCompile Include="Script\Source File\Character\LongDistanceAttackCharacter_Air.cpp" />
+    <ClCompile Include="Script\Source File\Character\LongDistanceAttackCharacter_Land.cpp" />
+    <ClCompile Include="Script\Source File\Character\ProximityAttackCharacter_Air.cpp" />
+    <ClCompile Include="Script\Source File\Character\ProximityAttackCharacter_Land.cpp" />
     <ClCompile Include="Script\Source File\Character\square.cpp" />
+    <ClCompile Include="Script\Source File\Character\TestAirCharacter.cpp" />
     <ClCompile Include="Script\Source File\Character\Weapon\TestWeapon.cpp" />
     <ClCompile Include="Script\Source File\Character\Weapon\Weapon.cpp" />
     <ClCompile Include="Script\Source File\Default\Console.cpp" />

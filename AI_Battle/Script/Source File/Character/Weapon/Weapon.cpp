@@ -13,14 +13,18 @@ Weapon::~Weapon()
 //ˆÚ“®ˆ—
 void Weapon::move(float frameTime)
 {
-	if (direction == Direction::RIGHT)
-	{
-		position.x += speed*frameTime;
-	}
-	else if (direction == Direction::LEFT)
-	{
-		position.x -= speed*frameTime;
-	}
+	setTargetRadian();
+	position.x += Math::cos(targetRadian);
+	position.y += Math::sin(targetRadian);
+
+}
+
+void Weapon::setTargetRadian()
+{
+	float w = targetCharacterPosition.x - position.x;
+	float h = targetCharacterPosition.y - position.y;
+
+	targetRadian = Math::atan(h, w);
 }
 
 bool Weapon::collisionCharacter(Character* character)
